@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+</head>
+
+<body>
+    <p>
+        Crea un programa que pida al usuario que introduzca una edad y muestre el siguiente mensaje en función del
+        número introducido:
+        >18: absoluto
+        16-18: juvenil
+        14-15: cadete
+        12-13: infantil
+        10-11: alevín
+        8-9: benjamín
+        Si se introduce un número menor de 8 se mostrará un mensaje al respecto.
+    </p>
+
+    <script>
+        let edad = prompt("¿Qué edad tienes?")
+        parseInt(edad);
+
+        if(edad>18){
+            alert("Absoluto");
+        } else if(edad>=16){
+            alert("juvenil");
+        } else if(edad>=14){
+            alert("cadete");
+        } else if(edad>=12){
+            alert("infantil");
+        } else if(edad>=10){
+            alert("alevín");
+        } else if(edad>=8){
+            alert("benjamín")
+        } else {
+            alert("No tiene categoria")
+        }
+
+    </script>
+</body>
+
+</html>
