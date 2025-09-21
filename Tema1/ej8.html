@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 8</title>
+</head>
+
+<body>
+    <p>
+        Modifica el ejercicio anterior de la siguiente forma:
+         En primer lugar, se carga un prompt donde pregunta: ¿Cuál fue el primer presidente de la democracia española?
+         En caso de que el usuario introduzca mal nombre y apellido, muestre como mensaje: ERROR. Inténtelo de nuevo.
+        ¿Cuál fue el primer presidente de la democracia española?
+         En caso de que el usuario introduzca el nombre del presidente (solamente) el prompt mostrará como mensaje Te
+        falta el apellido. ¿Cuál fue el primer presidente de la democracia española?
+         En caso de que el usuario introduzca el apellido del presidente (solamente) el prompt mostrará como mensaje Te
+        falta el nombre. ¿Cuál fue el primer presidente de la democracia española?
+        Comenta el código con los comentarios que estimes necesarios.
+    </p>
+
+    <script>
+        // Guardamos el nombre y apellido correctos del primer presidente de la democracia
+        var nombreCorrecto = "adolfo";
+        var apellidoCorrecto = "suarez";
+
+        var respuestaUsuario; // Guardará lo que escriba el usuario
+
+        // Usamos un bucle do...while porque queremos preguntar al menos una vez
+        do {
+            // Pregunta inicial
+            respuestaUsuario = prompt("¿Cuál fue el primer presidente de la democracia española?");
+
+            // Si el usuario cancela, rompemos el bucle
+            if (respuestaUsuario === null) {
+                break;
+            }
+
+            // Normalizamos la respuesta a minúsculas y quitamos espacios al inicio/final
+            respuestaUsuario = respuestaUsuario.trim().toLowerCase(); //trim() se usa para eliminar espacios en blanco al inicio y al final de la cadena
+
+            // Comprobamos los diferentes casos
+            if (respuestaUsuario === nombreCorrecto + " " + apellidoCorrecto) {
+                // Caso correcto: nombre y apellido
+                alert("¡Correcto! Bienvenido a la página.");
+                break; // Salimos del bucle
+
+            } else if (respuestaUsuario === nombreCorrecto) {
+                // Solo ha puesto el nombre
+                alert("Te falta el apellido. ¿Cuál fue el primer presidente de la democracia española?");
+
+            } else if (respuestaUsuario === apellidoCorrecto) {
+                // Solo ha puesto el apellido
+                alert("Te falta el nombre. ¿Cuál fue el primer presidente de la democracia española?");
+
+            } else {
+                // Caso incorrecto: ni solo nombre ni solo apellido ni nombre+apellido correcto
+                alert("ERROR. Inténtelo de nuevo. ¿Cuál fue el primer presidente de la democracia española?");
+            }
+
+        } while (true); // Se repetirá hasta que acierte o cancele
+    </script>
+</body>
+
+</html>

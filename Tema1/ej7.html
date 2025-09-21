@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 7</title>
+</head>
+
+<body>
+
+    <p>
+        Crea un control parental para que no se pueda entrar en una página.
+        Se pedirá al usuario que escriba el apellido del primer presidente español de la democracia (si no sabes quién
+        fue, busca en Google ;)
+        Mientras el usuario no introduzca la respuesta correcta, el mensaje seguirá saliendo.
+        Comenta el código con los comentarios que estimes necesarios.
+    </p>
+
+    <script>
+        // Guardamos la respuesta correcta (apellido del primer presidente español de la democracia)
+        var respuestaCorrecta = "suarez"; // en minúsculas y sin tilde
+
+        var respuestaUsuario;
+
+        // Usamos do while porque al menos queremos preguntar una vez
+        do {
+            respuestaUsuario = prompt("Control parental:\nEscribe el apellido del primer presidente español de la democracia");
+
+            // Si el usuario no pulsa "Cancelar"
+            if (respuestaUsuario !== null) {
+                // Pasamos a minúsculas para que no importe cómo lo escriba
+                respuestaUsuario = respuestaUsuario.toLowerCase();
+            }
+
+        } while (respuestaUsuario !== respuestaCorrecta && respuestaUsuario !== null);
+
+        // Si acierta, mostramos un mensaje de éxito
+        if (respuestaUsuario === respuestaCorrecta) {
+            alert("¡Correcto! Bienvenido a la página.");
+        }
+    </script>
+
+</body>
+
+</html>

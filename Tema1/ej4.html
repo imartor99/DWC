@@ -20,11 +20,25 @@
     </p>
 
     <script>
+        let media = false; // false = en punto (:00), true = y media (:30)
 
-        for(let hora=9;hora<22;hora++){
-            let 
+        // Recorremos desde las 9 hasta las 21 horas
+        for (let hora = 9; hora <= 21;) {
+            if (!media) {
+                // Hora en punto
+                document.write(hora + ":00<br>");
+                media = true; // la próxima será y media
+            } else {
+                // Media hora
+                if (hora === 21) {
+                    document.write(hora + ":30");
+                } else {
+                    document.write(hora + ":30<br>");
+                }
+                media = false; // la próxima vez será en punto
+                hora++;        // solo avanzamos la hora tras imprimir la media
+            }
         }
-
     </script>
 
 </body>

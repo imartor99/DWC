@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 5</title>
+</head>
+
+<body>
+
+    <p>
+        Utiliza el siguiente script en un fichero HTML y comprueba su funcionamiento. Posteriormente, cambia la línea
+        countdown— por countdown++ y comprueba de nuevo el funcionamiento explicando qué ocurre.
+    </p>
+
+
+
+    <script>
+        var countdown = prompt("Introduce un número para iniciar la cuenta atrás");
+        while(countdown>0) {
+            alert (countdown + "... ");
+            countdown++ // countdown--
+        }
+        /* Si cambiamos a countdown++ la variable que controla la cuenta atrás aumentara , en cada vuelta de bucle, de manera infinita ya que countdown siempre va a ser mayor que 0*/ 
+    </script>
+</body>
+
+</html>
