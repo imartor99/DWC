@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+</head>
+
+<body>
+
+    <p>2. The Lifetime Supply Calculator: function supplyCalculator
+        *Ever wonder how much a "lifetime supply" of your favorite snack is? Wonder no more!*
+        - Store your current age into a variable.
+        - Store a maximum age into a variable.
+        - Store an estimated amount per day (as a number).
+        - Calculate how many you would eat total for the rest of your life.
+        - Output the result to the screen like so: "You will need NN to last you until the ripe old age of X".</p>
+
+    <script>
+
+        let edadActual = parseInt(prompt("Introduce tu edad actual:", "25"));
+        let edadMaxima = parseInt(prompt("Introduce la edad máxima que esperas alcanzar:", "80"));
+        let cantidadDiaria = parseFloat(prompt("¿Cuántas unidades consumes al día?", "2"));
+        let cantidadTotal = (edadMaxima - edadActual) * 365 * cantidadDiaria;
+        
+        alert(`Necesitarás ${cantidadTotal} unidades para llegar con suficientes suministros a la edad máxima de ${edadMaxima} años.`);</script>
+
+</body>
+
+</html>

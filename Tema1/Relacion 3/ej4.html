@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4</title>
+</head>
+
+<body>
+
+    <p>4. The Temperature Converter convertTemperature
+        It's hot out! Let's make a converter, and again you'll have to search the internet how to do it.
+        - Store a celsius temperature into a variable.
+        - Convert it to fahrenheit and output "NN°C is NN°F".
+        - Now store a fahrenheit temperature into a variable.
+        - Convert it to celsius and output "NN°F is NN°C."
+    </p>
+
+    <script>
+
+        let celsius = parseFloat(prompt("Introduce la temperatura en °C:", "25"));
+        let fahrenheitDesdeCelsius = (celsius * 9 / 5) + 32;
+        alert(`${celsius}°C son ${fahrenheitDesdeCelsius}°F`);
+
+        let fahrenheit = parseFloat(prompt("Introduce la temperatura en °F:", "77"));
+        let celsiusDesdeFahrenheit = (fahrenheit - 32) * 5 / 9;
+        alert(`${fahrenheit}°F son ${celsiusDesdeFahrenheit}°C`);
+
+    </script>
+
+</body>
+
+</html>

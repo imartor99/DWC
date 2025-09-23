@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+
+<body>
+
+    <p>1. The Age Calculator: function ageCalculator
+        *Forgot how old someone is? Calculate it!*
+        - Store the current year in a variable.
+        - Store their birth year in a variable.
+        - Calculate their 2 possible ages based on the stored values.
+        - Output them to the screen like so: "They are either NN or NN", substituting the values.
+    </p>
+
+
+    <script>
+
+        let añoNacimiento = parseInt(prompt("Introduce tu año de nacimiento:", "1990"));
+
+        let añoActual = new Date().getFullYear(); //metodo que devuelve el año actual
+
+        let edad1 = añoActual - añoNacimiento;
+        let edad2 = edad1 - 1;
+
+        alert(`Tienes ${edad2} o ${edad1} años.`);
+        
+    </script>
+
+</body>
+
+</html>
