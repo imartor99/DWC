@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 5</title>
+</head>
+
+<body>
+
+    <p>Escribe programa en JavaScript que consista en adivinar un número previamente introducido por teclado (jugador 1).
+        El programa pedirá tantos números como intentos erróneos haga el jugador 2.
+        Solamente terminará cuando el jugador 2 acierte. El programa dará pistas al jugador 2 indicándole si su número
+        es mayor o menor que el número a adivinar.
+    </p>
+
+    <script>
+        // Jugador 1 introduce el número secreto
+        let numeroSecreto = parseInt(prompt("Jugador 1, introduce el número secreto:"));
+
+        // Jugador 2 intenta adivinar
+        let intento;
+
+        do {
+            intento = parseInt(prompt("Jugador 2, adivina el número:"));
+
+            if (intento > numeroSecreto) {
+                alert("El número secreto es menor.");
+            } else if (intento < numeroSecreto) {
+                alert("El número secreto es mayor.");
+            } else {
+                alert("¡Correcto! Has adivinado el número.");
+            }
+
+        } while (intento !== numeroSecreto);
+
+    </script>
+
+</body>
+
+</html>

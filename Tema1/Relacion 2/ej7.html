@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 7</title>
+</head>
+
+<body>
+
+    <p>Hacer un programa que pida por teclado cuatro valores: el número de columnas y filas de una tabla y, la altura y
+        anchura (en pixels) de sus celdas. Una vez tecleados estos valores, el programa pintará en la página web una
+        tabla HTML del nº de filas por el nº de columnas tecleadas.</p>
+
+    <script>
+        const columnas = parseInt(prompt("Número de columnas:", "4"));
+        const filas = parseInt(prompt("Número de filas:", "4"));
+        const anchura = parseInt(prompt("Anchura de cada celda (px):", "100"));
+        const altura = parseInt(prompt("Altura de cada celda (px):", "50"));
+
+        document.write(`<table border="1" style="border-collapse: collapse;">`);
+        for (let f = 0; f < filas; f++) {
+            document.write(`<tr>`);
+            for (let c = 0; c < columnas; c++) {
+                document.write(`<td style="width:${anchura}px; height:${altura}px; text-align:center; vertical-align:middle;"></td>`);
+            }
+            document.write(`</tr>`);
+        }
+        document.write(`</table>`);
+    </script>
+
+</body>
+
+</html>

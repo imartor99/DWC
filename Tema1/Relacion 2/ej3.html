@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+</head>
+
+<body>
+    <p>Hacer un programa que pida por teclado tres valores: el número de columnas de una tabla y, la altura y anchura
+        (en pixels) de sus celdas. Una vez tecleados estos valores, el programa pintará en la página web una tabla HTML
+        de una fila por el nº de columnas tecleadas.¡Modifica el ejercicio anterior para que las columnas impares tengan
+        un fondo negro y las pares fondo blanco:!</p>
+
+    <script>
+        let columnas = prompt("Inserte el nº de columnas de la tabla a dibujar: ");
+        let altura = prompt("Introduzca la altura (pixels) de cada celda: ");
+        let anchura = prompt("Introduzca la anchura (pixels) de cada celda: ");
+
+        document.write(`<table border="0" cellspacing="2" bgcolor="black" width="200">`);
+        document.write(`<tr bgcolor="white" height="${altura}">`);
+
+        // Empezamos a comprobar desde 1 si el numero es par o no para colorear en función del resultado
+        for (let i = 0; i < columnas; i++) {
+            if ((i + 1) % 2 === 0) {
+                // columna par → blanca
+                document.write(`<td bgcolor="white" width="${anchura}">&nbsp;</td>`);
+            } else {
+                // columna impar → negra
+                document.write(`<td bgcolor="black" width="${anchura}">&nbsp;</td>`);
+            }
+        }
+
+        document.write(`</tr>`);
+        document.write(`</table>`);
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 8</title>
+</head>
+
+<body>
+
+    <p>Hacer un programa que pinte un tablero de ajedrez de 8x8 casillas usando dos for anidados. El programa pedirá
+        solamente el ancho de la celda que será igual que el alto.</p>
+
+    <script>
+        const tamaño = parseInt(prompt("Introduce el ancho/alto de cada celda en px:", "50"));
+
+        document.write(`<table style="border-collapse: collapse;">`);
+        for (let fila = 0; fila < 8; fila++) {
+            document.write(`<tr>`);
+            for (let columna = 0; columna < 8; columna++) {
+                // Determinar color: negro si fila+columna(posición de cada casilla) es impar, blanco si es par
+                const color = (fila + columna) % 2 === 0 ? "#ffffff" : "#000000";
+                document.write(`<td style="width:${tamaño}px; height:${tamaño}px; background-color:${color};"></td>`);
+            }
+            document.write(`</tr>`);
+        }
+        document.write(`</table>`);
+    </script>
+
+</body>
+
+</html>
