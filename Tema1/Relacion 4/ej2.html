@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+</head>
+<body>
+
+    <p>Write a function called addOnlyNums that can take in any number of arguments (including numbers or strings), and returns the sum of only the numbers.</p>
+
+    <script>
+
+        function addOnlyNums(...args){
+            let sum = 0;
+            for(i=0;i<args.length;i++){
+                if (typeof args[i] === 'number'){
+                    sum += args[i];
+                }
+            }
+            return sum;
+        }
+        let sumResult= addOnlyNums(2,3,"c","s");
+        document.write("La suma de los numeros de la funcion es " + sumResult);
+    </script>
+</body>
+</html>
