@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4</title>
+</head>
+
+<body>
+
+    <p>Write a function called combineTwoArrays that takes in two arrays as arguments, and returns a single array that
+        combines both (using the spread operator).</p>
+
+    <script>
+        let nums1 = [1, 3, 5];
+        let nums2 = [2, 4, 6];
+        function combineTwoArrays(arr1, arr2) {
+            let numCombined = [...arr1, ...arr2];
+            return numCombined
+
+        }
+
+        document.write("Arrays combinados: " + combineTwoArrays(nums1, nums2))
+    </script>
+
+</body>
+
+</html>
