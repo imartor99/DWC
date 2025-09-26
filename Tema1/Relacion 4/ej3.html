@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+</head>
+
+<body>
+
+    <p>Write a function called countTheArgs that can take any number of arguments, and returns the number of arguments
+        that are passed in.</p>
+
+    <script>
+        function countTheArgs(...args) {
+            let argsSum = args.length;
+            return argsSum;
+        }
+        let sumResult = countTheArgs(2, 3, "c", "s", 6);
+        document.write("La suma de los argumentos de la funcion es " + sumResult);
+    </script>
+
+</body>
+
+</html>
