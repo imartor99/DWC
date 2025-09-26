@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 5</title>
+</head>
+
+<body>
+
+    <p>Write a function called sumEveryOther that takes in any amount of arguments, and returns the sum of every other
+        argument.</p>
+
+    <script>
+        function sumEveryOther(...args) {
+            let suma = 0;
+            for (i = 0; i < args.length; i += 2) {
+                if (typeof args[1] === 'number') {
+                    suma += args[i];
+                } else {
+                    document.write(`El argumento con índice ${i} ha sido ignorado en la suma porque no es un número`);
+                }
+            }
+            return suma;
+        }
+
+        document.write("La suma de los argumentos con índice o o par es: " + sumEveryOther(1, 2, 3, 4, 6, 6))
+    </script>
+
+</body>
+
+</html>
