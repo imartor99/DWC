@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 8</title>
+</head>
+<body>
+
+    <p>Escribe una función rango(valor, rangoInf, rangoSup) que compruebe si dos números dados están entre un rango determinado.</p>
+
+    <script>
+        rango(4,4,6)
+        function rango(valor, rangoInf, rangoSup){
+            if(valor >= rangoInf && valor <=rangoSup){
+                document.write("El número " + valor + " está en el rango [" + rangoInf + "," + rangoSup + "]")
+            }else{
+                document.write("El número " + valor + " no está en el rango [" + rangoInf + "," + rangoSup + "]")
+            }
+        }
+    </script>
+    
+</body>
+</html>
