@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 7</title>
+</head>
+
+<body>
+    <p>Write a function called squareAndSum that takes in any number of arguments, squares them, then sums all of the
+        squares.</p>
+
+    <script>
+
+        operacion = squareAndSum(3,5,7,9);
+
+        document.write("El resultado tras elevar al cuadrado cada numero del array y sumarlos entre ellos es: " + operacion);
+
+        function squareAndSum(...args) {
+
+            //Donde almaceno el resultado tras elervar al cuadrado e ir sumando el resultado en cada vuelta
+            let suma = 0;
+
+            for (let i = 0; i < args.length; i++) {
+                let numero = args[i];
+                suma += numero * numero; 
+            }
+
+            return suma;
+        }
+
+    </script>
+
+</body>
+
+</html>
