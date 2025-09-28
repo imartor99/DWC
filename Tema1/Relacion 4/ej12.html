@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 12</title>
+</head>
+
+<body>
+    <p>Function precioFinal que calcule el precio final de un producto después de aplicarle un descuento, recibirá el
+        precio original y el descuento.</p>
+
+    <script>
+
+        let precio1 = 100;
+        let descuento1 = 20;
+
+        let precioFinal1 = precioFinal(precio1, descuento1);
+
+        document.write("Con un precio base de " + precio1 + " si le aplicamos el " + descuento1 + "% de descuento su precio final sería de: " + precioFinal1);
+
+
+
+        function precioFinal(precio, descuento) {
+            let porcentaje = precio * (descuento / 100);
+            let precioFin = precio - porcentaje;
+            return precioFin;
+        }
+
+    </script>
+</body>
+
+</html>
