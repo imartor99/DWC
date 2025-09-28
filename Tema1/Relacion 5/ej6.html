@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 6</title>
+</head>
+
+<body>
+
+    <p>Write a function called onlyUniques that can take in any number of arguments, and returns an array of only the
+        unique arguments.</p>
+
+    <script>
+
+        array1 = onlyUniques("pepe", "pepe", "juan", "juan");
+        document.write("El array creado por la funcion es: " + array1);
+
+        function onlyUniques(...args) {
+            //return [...new Set(args)]; //esto lo he buscado y es mas rapido. objeto Set (Conjunto) es una característica moderna de JavaScript que solo permite almacenar valores únicos
+            //Lo hago ahora con logica de bucle
+
+            //Creo el array
+            let resultado = [];
+
+            //Recorremos el array
+            for (let i = 0; i < args.length; i++) {
+                let elemento = args[i];
+
+                // Si el elemento NO está ya en el array resultado, lo añadimos
+                if (!resultado.includes(elemento)) {
+                    resultado.push(elemento);
+                }
+            }
+
+            return resultado;
+        }
+
+
+
+
+    </script>
+
+</body>
+
+</html>
