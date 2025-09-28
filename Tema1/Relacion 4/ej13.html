@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 13</title>
+</head>
+
+<body>
+
+    <p>Función factorial que calcule el factorial de un número.</p>
+
+    <script>
+
+        let num1 = 4;
+
+        resultado1 = fact(num1);
+
+        document.write("EL factorial de " + num1 + " es " + resultado1);
+
+        
+
+        function fact(num) {
+            // Defino el factorial de 0 y 1.
+            if (num === 0 || num === 1) {
+                return 1;
+            }
+
+            // Inicializamos la variable que acumulará el producto
+            let resultado = 1;
+
+            // Recorremos desde 2 hasta n (ya que multiplicar por 1 no cambia el resultado)
+            for (let i = 2; i <= num; i++) {
+                // Multiplicamos el resultado actual por el número del bucle
+                resultado = resultado * i;
+            }
+
+            // Devolvemos el resultado final
+            return resultado;
+        }
+    </script>
+
+</body>
+
+</html>
