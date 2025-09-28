@@ -9,6 +9,16 @@
     <p>Función imc que devuelva el IMC (índice de masa corporal) dividiendo el peso de una persona en kilogramos entre la altura en metros al cuadrado.</p>
 
     <script>
+
+        let peso1 = 75;
+        let altura1 = 1.9;
+
+        let resultado = calculaIMC(peso1, altura1)
+
+        document.write("Con un peso de " + peso1 + " kg y una altura de " + altura1 + " m, tu imc es de " + resultado.toFixed(2))
+
+        calculaIMC(peso1)
+
         function calculaIMC(peso, altura){
             let imc = peso / (altura**2);
             return imc;
