@@ -1,13 +1,83 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejercicio 1</title>
 </head>
+
 <body>
 
-    <p></p>
-    
+    <p>Escribe un programa en el que se solicite al usuario que escriba un título para una página. A continuación se
+        abrirá una nueva ventana de 400 píxeles de alto por 500 píxeles de ancho, en la que se podrá leer el título
+        ingresado por el usuario.
+         La nueva ventana ha de visualizarse arriba y a la derecha de la pantalla del usuario.
+         La ventana principal ha de contener un botón cerrar ventana, que permita cerrar la ventana secundaria.
+    </p>
+
+    <h1>Ejercicio 1: Abrir y Configurar Ventana</h1>
+
+    <label for="titulo">Ingresa el título de la nueva página:</label>
+    <input type="text" id="titulo" placeholder="Escribe aquí el título">
+    <br><br>
+
+    <button onclick="abrirVentana()">Abrir Ventana Secundaria</button>
+    <button onclick="cerrarVentana()">Cerrar Ventana Secundaria</button>
+
+    <script>
+        //Declaramos variable global para guardar la referencia de la nueva ventana.
+        let ventanaSecundaria = null;
+
+        function abrirVentana() {
+            //Obtengo y almaceno el título introducido por el usuario
+            let tituloUsuario = document.getElementById('titulo').value;
+
+            //Validamos lo introducido por el usuario
+            if (!tituloUsuario) {
+                alert('Debes introducir un titulo para la nueva página');
+                return;
+            }
+
+
+            //Posicion y tamaño
+            let altura = 400;
+            let ancho = 500;
+
+            //Posicionamos arriba y a la derecha
+            let posIzquierda = screen.availWidth - ancho;
+            let posArriba = 0;
+
+            //Parametros de la nueva ventana
+            let opcionesVentana = `width=${ancho},height=${altura},left=${posIzquierda},top=${posArriba}`;
+
+            //Con window.open() asignamos la referencia a la variable que creamos para ello.
+            ventanaSecundaria = window.open("", "VentanaNueva", opcionesVentana);
+
+            //Creo el contenido de la ventana usando `` para poder meter variables y código js
+
+            ventanaSecundaria.document.write(`<h2>El título ingresado es: "${tituloUsuario}"</h2>`);
+
+            ventanaSecundaria.document.close();
+        }
+
+        function cerrarVentana() {
+            //Compruebo que existe la referencia de la nueva ventana y que NO esté cerrada.
+            if (ventanaSecundaria && !ventanaSecundaria.closed) {
+                ventanaSecundaria.close();
+
+                //Limpio mi variable global donde almaceno la referencia de la nueva ventana para poder reusarlo sin problemas.
+                ventanaSecundaria = null;
+            } else if (ventanaSecundaria && ventanaSecundaria.closed) {
+                alert("La ventana secundaria ya ha sido cerrada por el usuario");
+                ventanaSecundaria = null;
+            } else {
+                //Si no hay refencia y la ventana nunca se abrio desde el botón.
+                alert("La ventana secundaria no está actualmente abierta.");
+            }
+        }
+    </script>
+
 </body>
+
 </html>

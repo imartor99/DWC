@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+
+<body>
+
+    <p>Crea un programa que muestre el número de días que quedan desde hoy hasta las vacaciones de Navidad (19 de
+        diciembre).</p>
+
+    <script>
+
+        function diasHastaNavidad() {
+
+
+
+            //Defino la fecha actual
+            let fechaHoy = new Date();
+
+            //Defino la fecha de las vacaciones pero antes obtengo el año actual para su objeto date
+            let anioActual = fechaHoy.getFullYear();
+
+            let fechaNavidad = new Date(anioActual, 11, 19);
+
+            //Calculamos diferencia entre fechas en milisegundos
+            let difMS = fechaNavidad.getTime() - fechaHoy.getTime();
+
+            //Calculo de ms a días
+            let milisegundosPorDia = 1000 * 60 * 60 * 24;
+
+            let diasRestantes = Math.ceil(difMS / milisegundosPorDia);
+
+            let mensaje =
+                `Hoy es ${fechaHoy.toLocaleDateString('es-ES')}.\n` +
+                `Las vacaciones de Navidad son el ${fechaNavidad.toLocaleDateString('es-ES')}.\n` +
+                `¡Quedan ${diasRestantes} días hasta las vacaciones de Navidad! `;
+
+            document.write(mensaje);
+        }
+
+        diasHastaNavidad();
+
+    </script>
+
+</body>
+
+</html>
