@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+</head>
+
+<body>
+
+    <p>Crea un programa que muestre la hora actual en los formatos siguientes:
+        1. 14:35:07 (hora detallada con minutos y segundos)
+        2. Son las 14h y 35m
+    </p>
+
+    <script>
+        let fechaActual = new Date();
+
+        let hora = fechaActual.getHours();
+        let min = fechaActual.getMinutes();
+        let seg = fechaActual.getSeconds();
+
+        document.write("1. " + hora + ":" + min + ":" + seg + " (hora detallada con minutos y segundos)")
+        document.write("<br>")
+        document.write("2. Son las " + hora + "h y " + min + "m")
+    </script>
+
+    
+
+</body>
+
+</html>
