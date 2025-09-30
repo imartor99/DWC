@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+</head>
+
+<body>
+
+    <p>Crea un programa que pida por parámetro tu cumpleaños en este formato YYYY-MM-DD, y muestre usando la consola de
+        depuración del navegador todos los años en los que tu cumpleaños cae en domingo, hasta el año 2100.</p>
+
+    <script>
+        function cumpleanyosEnDomingo(fechaCumpleanyos) {
+
+            // Definimos fecha límite.
+            let limiteAnyo = 2100
+
+            // Obtenemos el año de nacimiento a partir de la fecha
+            let anyoNacimiento = new Date(fechaCumpleanyos).getFullYear();
+
+            // Comprobamos si la fecha proporcionada es válida
+            if (isNaN(anyoNacimiento)) {
+                console.error("Error: La fecha de cumpleaños proporcionada no es válida.");
+                return;
+            }
+
+            // El domingo corresponde al día 0 en el método getDay() de JavaScript
+            let diaSemanaDomingo = 0;
+
+            let anyosEnDomingo = [];
+
+            // Construimos la fecha de cumpleaños para el año actual
+            // Necesitamos extraer el mes y el día del formato YYYY-MM-DD para el nuevo Date()
+            let partesFecha = fechaCumpleanyos.split('-');
+            // Creamos la fecha
+            // restamos 1 al mes xq en JS los meses empienzan en 0.
+            let mes = parseInt(partesFecha[1]) - 1;
+            let dia = parseInt(partesFecha[2]);
+
+            // Recorremos desde el año de nacimiento hasta el límite (2100)
+            for (let anyo = anyoNacimiento; anyo <= limiteAnyo; anyo++) {
+
+                let fechaActual = new Date(anyo, mes, dia);
+
+                // Obtenemos el día de la semana: 0=Domingo, 1=Lunes, ..., 6=Sábado
+                if (fechaActual.getDay() === diaSemanaDomingo) {
+                    anyosEnDomingo.push(anyo);
+                }
+            }
+
+            document.write(`Buscando años entre ${anyoNacimiento} y ${limiteAnyo} donde el cumpleaños ${fechaCumpleanyos} cae en domingo...`);
+            document.write(`<br><br>`)
+
+
+            document.write(`Años en que tu cumpleaños (${fechaCumpleanyos}) cae en domingo (hasta ${limiteAnyo}):`);
+            document.write("<br><br>");
+
+            if (anyosEnDomingo.length > 0) {
+                
+                document.write("Lista de años:");
+                document.write("<br>"); 
+                
+                // Recorremos el array e imprimimos cada año con un salto de línea
+                for (let i = 0; i < anyosEnDomingo.length; i++) {
+                    let anio = anyosEnDomingo[i];
+                    document.write(`- ${anio}`);
+                    document.write("<br>");
+                }
+
+                document.write(`<br>Total de años: ${anyosEnDomingo.length}`);
+            } else {
+                document.write(`No se encontró ningún año entre ${anyoNacimiento} y ${limiteAnyo} donde tu cumpleaños cayera en domingo.`);
+            }
+
+        }
+
+        let miCumple = '1999-01-23';
+        cumpleanyosEnDomingo(miCumple);
+    </script>
+
+</body>
+
+</html>
