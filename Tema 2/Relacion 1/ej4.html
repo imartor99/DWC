@@ -65,7 +65,27 @@
                     alert("Error interno de la aplicación.");
             }
 
-        }  
+        }
+
+        //Funciones del menu
+        /**
+        * Opción 1: Pide base y exponente, calcula la potencia con Math.pow().
+        */
+        function calcularPotencia() {
+            let base = parseFloat(prompt("Introduce la base (número X):"));
+            let exponente = parseFloat(prompt("Introduce el exponente (número Y):"));
+
+            if (isNaN(base) || isNaN(exponente)) {
+                alert("Ambos valores deben ser números.");
+                return;
+            }
+
+            const resultado = Math.pow(base, exponente);
+
+            document.write(`La potencia de ${base} elevado a ${exponente} es: **${resultado}**`);
+            // También se podría mostrar con alert(``)
+        }
+
     </script>
 
 </body>
