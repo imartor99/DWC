@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4</title>
+</head>
+
+<body>
+
+    <p>Crea un programa que pida al usuario que elija una de las siguientes opciones (del 1 al 4):
+         Si el usuario introduce 1, se le deberá pedir una base y un exponente y se deberá utilizar el método
+        correspondiente para mostrar el resultado en pantalla en el formato:
+        La potencia de X elevado a Y es: ___
+         Si el usuario introduce 2, se le pedirá un número (no negativo) y se mostrará el resultado en pantalla: La
+        raíz de X es: ___
+        Aplicaciones web en entorno cliente
+        Prácticas del tema 3
+         Si el usuario introduce 3, se le pedirá un número decimal por pantalla y se mostrará el redondeo al entero más
+        próximo, al alza y a la baja.
+         Si el usuario introduce 4, se le pedirá que introduzca un ángulo (entre 0º y 360º) y se le mostrarán por
+        pantalla los valores trigonométricos del seno, coseno y la tangente.
+    </p>
+
+    <script>
+
+
+
+        function calculadoraMath() {
+            let opcion;
+
+            // Bucle para asegurar que el usuario introduce una opción válida
+            do {
+                opcion = prompt("Elige una de las siguientes opciones (introduce el número):\n" +
+                    "1. Calcular potencia (base y exponente)\n" +
+                    "2. Calcular raíz cuadrada\n" +
+                    "3. Redondear un número decimal (al más próximo, al alza y a la baja)\n" +
+                    "4. Calcular valores trigonométricos (seno, coseno, tangente)");
+
+                // Convierte la entrada a número y comprueba que esté en el rango [1, 4]
+                opcion = parseInt(opcion);
+
+                if (isNaN(opcion) || opcion < 1 || opcion > 4) {
+                    alert("Opción no válida. Por favor, introduce un número entre 1 y 4.");
+                }
+            } while (isNaN(opcion) || opcion < 1 || opcion > 4);
+
+            //Ejecuta la función correspondiente a la opción elegida
+            switch (opcion) {
+                case 1:
+                    calcularPotencia();
+                    break;
+                case 2:
+                    calcularRaizCuadrada();
+                    break;
+                case 3:
+                    redondearNumero();
+                    break;
+                case 4:
+                    calcularTrigonometria();
+                    break;
+                default:
+                    // Este caso no debería ejecutarse gracias al bucle 'do-while'
+                    alert("Error interno de la aplicación.");
+            }
+
+        }  
+    </script>
+
+</body>
+
+</html>
