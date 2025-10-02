@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 6</title>
+</head>
+
+<body>
+
+    <p>Crea un programa que pida al usuario su nombre y apellidos y muestre, a través de la consola de depuración del
+        navegador, la siguiente información:
+        1. El tamaño del nombre más los apellidos
+        2. La cadena en minúsculas y en mayúsculas.
+        3. Que divida el nombre y los apellidos y los muestre en 3 líneas, de la siguiente manera:
+        Nombre: xxxxxx
+        Apellido 1: xxxxxx
+        Apellido 2: xxxxxx
+    </p>
+
+    <br>
+
+    <p>Abre la consola (F12) para ver los resultados.</p>
+
+    <script>
+        // Pedimos los datos al usuario
+        let nombre = prompt("Introduce tu nombre:");
+        let apellido1 = prompt("Introduce tu primer apellido:");
+        let apellido2 = prompt("Introduce tu segundo apellido:");
+
+        // Unimos todo en una sola cadena
+        let nombreCompleto = `${nombre} ${apellido1} ${apellido2}`;
+
+        // 1. Tamaño total de la cadena
+        console.log("Tamaño del nombre completo:", nombreCompleto.length);
+
+        // 2. En minúsculas y mayúsculas
+        console.log("En minúsculas:", nombreCompleto.toLowerCase());
+        console.log("En mayúsculas:", nombreCompleto.toUpperCase());
+
+        // 3. Mostrar separado
+        console.log("Nombre:", nombre);
+        console.log("Apellido 1:", apellido1);
+        console.log("Apellido 2:", apellido2);
+    </script>
+
+</body>
+
+</html>
