@@ -61,16 +61,13 @@
                     calcularTrigonometria();
                     break;
                 default:
-                    // Este caso no debería ejecutarse gracias al bucle 'do-while'
                     alert("Error interno de la aplicación.");
             }
 
         }
 
         //Funciones del menu
-        /**
-        * Opción 1: Pide base y exponente, calcula la potencia con Math.pow().
-        */
+        // Opción 1: Pide base y exponente, calcula la potencia con Math.pow().
         function calcularPotencia() {
             let base = parseFloat(prompt("Introduce la base (número X):"));
             let exponente = parseFloat(prompt("Introduce el exponente (número Y):"));
@@ -82,9 +79,66 @@
 
             const resultado = Math.pow(base, exponente);
 
-            document.write(`La potencia de ${base} elevado a ${exponente} es: **${resultado}**`);
-            // También se podría mostrar con alert(``)
+            document.write(`La potencia de ${base} elevado a ${exponente} es: ${resultado}`);
         }
+
+        // Opción 2: Raíz cuadrada
+        function calcularRaizCuadrada() {
+            let numero = parseFloat(prompt("Introduce un número (no negativo):"));
+
+            if (isNaN(numero) || numero < 0) {
+                document.write("Debes introducir un número válido y no negativo.");
+                return;
+            }
+
+            const resultado = Math.sqrt(numero);
+            document.write(`La raíz de ${numero} es: ${resultado}`);
+        }
+
+        // Opción 3: Redondeo
+        function redondearNumero() {
+            let numero = parseFloat(prompt("Introduce un número decimal:"));
+
+            if (isNaN(numero)) {
+                document.write("Debes introducir un número válido.");
+                return;
+            }
+
+            const redondeoNormal = Math.round(numero);
+            const redondeoArriba = Math.ceil(numero);
+            const redondeoAbajo = Math.floor(numero);
+
+            document.write(`Número original: ${numero}<br>`);
+            document.write(`Redondeo al más próximo: ${redondeoNormal}<br>`);
+            document.write(`Redondeo al alza: ${redondeoArriba}<br>`);
+            document.write(`Redondeo a la baja: ${redondeoAbajo}`);
+        }
+
+        // Opción 4: Trigonometría
+        function calcularTrigonometria() {
+            let angulo = parseFloat(prompt("Introduce un ángulo (entre 0º y 360º):"));
+
+            if (isNaN(angulo) || angulo < 0 || angulo > 360) {
+                document.write("Debes introducir un ángulo válido entre 0 y 360.");
+                return;
+            }
+
+            // Pasamos de grados a radianes
+            let radianes = angulo * (Math.PI / 180);
+
+            let seno = Math.sin(radianes).toFixed(4);
+            let coseno = Math.cos(radianes).toFixed(4);
+            let tangente = Math.tan(radianes).toFixed(4);
+
+            document.write(`Ángulo introducido: ${angulo}º<br>`);
+            document.write(`Seno: ${seno}<br>`);
+            document.write(`Coseno: ${coseno}<br>`);
+            document.write(`Tangente: ${tangente}`);
+        }
+
+        // Ejecutamos la calculadora al cargar
+        calculadoraMath();
+
 
     </script>
 
