@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 7</title>
+</head>
+
+<body>
+
+    <p>Escribe un programa que pida tres números y escriba en la pantalla cuál es el mayor.</p>
+
+    <script>
+        // Pedimos los tres números
+        let num1 = parseFloat(prompt("Introduce el primer número:"));
+        let num2 = parseFloat(prompt("Introduce el segundo número:"));
+        let num3 = parseFloat(prompt("Introduce el tercer número:"));
+
+        // Comprobamos que sean números válidos
+        if (isNaN(num1) || isNaN(num2) || isNaN(num3)) {
+            document.write("Debes introducir tres números válidos.");
+        } else {
+            // Calculamos el mayor usando Math.max
+            let mayor = Math.max(num1, num2, num3);
+
+            document.write(`El mayor de los tres números (${num1}, ${num2}, ${num3}) es: <b>${mayor}</b>`);
+        }
+    </script>
+    
+</body>
+
+</html>
