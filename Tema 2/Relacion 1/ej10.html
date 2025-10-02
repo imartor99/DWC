@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 10</title>
+</head>
+
+<body>
+
+    <p>Escribe un programa que pida una frase y escriba cuántas veces aparecen cada una de las vocales.</p>
+
+    <script>
+        // Pedimos la frase
+        let frase = prompt("Introduce una frase:");
+
+        if (frase === null || frase.trim() === "") {
+            document.write("No has introducido ninguna frase.");
+        } else {
+            // Convertimos todo a minúsculas
+            let texto = frase.toLowerCase();
+
+            // Inicializamos contadores de vocales
+            let contador = { a: 0, e: 0, i: 0, o: 0, u: 0 };
+
+            // Recorremos el texto carácter a carácter
+            for (let i = 0; i < texto.length; i++) {
+                let letra = texto[i];
+                if (contador.hasOwnProperty(letra)) {
+                    contador[letra]++;
+                }
+            }
+
+            // Mostramos resultados
+            document.write(`En la frase: "${frase}"<br><br>`);
+            document.write(`Cantidad de cada vocal:<br>`);
+            document.write(`A: ${contador.a}<br>`);
+            document.write(`E: ${contador.e}<br>`);
+            document.write(`I: ${contador.i}<br>`);
+            document.write(`O: ${contador.o}<br>`);
+            document.write(`U: ${contador.u}<br>`);
+        }
+    </script>
+</body>
+
+</html>
