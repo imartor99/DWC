@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2: Cierre de Ventanas Cruzado</title>
+</head>
+
+<body>
+
+    <h1>Ejercicio 2: Cierre de Ventanas Cruzado</h1>
+
+    <p>Escribe un programa que tenga un botón abrir ventana. Al pulsar sobre el botón ha de aparecer una nueva ventana
+        secundaria.
+        · La ventana secundaria ha de contener un botón cerrar ventana, que permita cerrarse a sí misma.
+        · La ventana principal también tendrá un botón cerrar ventana secundaria, para poder cerrar la ventana
+        secundaria.
+    </p>
+
+    <button onclick="abrirVentanaSecundaria()">Abrir Ventana Secundaria</button>
+    <button onclick="cerrarVentanaDesdePrincipal()">Cerrar Ventana Secundaria (Desde Aquí)</button>
+
+    <script>
+        // Declaramos variable global
+        let ventanaSecundaria = null;
+
+        function abrirVentanaSecundaria() {
+            if (ventanaSecundaria && !ventanaSecundaria.closed) {
+                ventanaSecundaria.focus();
+                return;
+            }
+
+            let opciones = 'width=350,height=200,left=100,top=100';
+            ventanaSecundaria = window.open("", "VentanaEjercicio2", opciones);
+
+            if (!ventanaSecundaria) {
+                alert("El navegador bloqueó la ventana emergente.");
+                return;
+            }
+
+            // Contenido HTML de la ventana secundaria(he buscado la manera de cerrar script en los templates para que no de error)
+            ventanaSecundaria.document.write(`<h2>Soy la Ventana Secundaria</h2><button onclick="window.close()">Cerrar esta Ventana</button>`);
+
+            ventanaSecundaria.document.close();
+        }
+
+        function cerrarVentanaDesdePrincipal() {
+            // Comprobamos la referencia y que no esté ya cerrada.
+            if (ventanaSecundaria && !ventanaSecundaria.closed) {
+                ventanaSecundaria.close();
+                ventanaSecundaria = null;
+                alert("Ventana secundaria cerrada desde la principal.");
+            } else {
+                alert("La ventana secundaria no está abierta o ya se cerró.");
+                ventanaSecundaria = null;
+            }
+        }
+    </script>
+</body>
+
+</html>
