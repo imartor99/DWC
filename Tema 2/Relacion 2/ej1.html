@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+
+<body>
+
+    <p>Utilizando setTimeout(), setInterval() creo un contador hacia atrás de 60 segundos</p>
+
+    <script>
+        function contadorCombinado() {
+            let segundosRestantes = 60;
+
+            // 1. Usamos setInterval para actualizar el contador cada segundo.
+            // Función anónima tradicional como callback
+            const intervaloID = setInterval(function () {
+                console.log(` Contador: ${segundosRestantes} segundos`);
+                segundosRestantes--;
+            }, 1000); // Se ejecuta cada 1000ms (1 segundo)
+
+            // 2. Usamos setTimeout para detener el setInterval
+            // después de los 60 segundos (60,000 milisegundos).
+            // Función anónima tradicional como callback
+            setTimeout(function () {
+                clearInterval(intervaloID); // ¡DETIENE el contador!
+                console.log("¡Tiempo terminado! (Detenido por setTimeout)");
+            }, 60000); // Se ejecuta una única vez después de 60 segundos
+        }
+
+        contadorCombinado();
+    </script>
+
+</body>
+
+</html>
