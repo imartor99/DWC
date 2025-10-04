@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4</title>
+</head>
+
+<body>
+
+    <p>Crea una página web que muestre el mensaje Hemos cambiado de ubicación esta página. En breves momentos será
+        redireccionado... junto a una cuenta atrás que muestre 5, 4, 3, 2, 1 (correspondiente a 5 segundos). Tras
+        transcurrir los 5 segundos y mostrarse la cuenta atrás, el usuario debe ser redireccionado a la url
+        http://www.pccomponentes.com.
+    </p>
+
+    <p>Hemos cambiado de ubicación esta página. En breves momentos será redireccionado...</p>
+
+    <!-- Usamos un span simple para mostrar la cuenta atrás -->
+    <span id="contador">5</span>
+
+    <script>
+        // La URL de destino
+        let URL_DESTINO = "http://www.pccomponentes.com";
+        // Tiempo inicial en segundos
+        let tiempoRestante = 5;
+        // Variable para almacenar el ID del intervalo (necesario para detenerlo)
+        let intervaloID;
+        // Referencia al elemento donde se muestra la cuenta atrás (DOM)
+        let elementoContador = document.getElementById('contador')
+
+        // Función tradicional que se llamará repetidamente
+        function actualizarYRedirigir() {
+            // 1. Reducimos el tiempo
+            tiempoRestante--;
+
+            // 2. Comprobamos si el tiempo ha terminado (llega a 0)
+            if (tiempoRestante <= 0) {
+                // Detenemos la repetición
+                clearInterval(intervaloID);
+
+                // Redireccionamos al usuario
+                window.location.href = URL_DESTINO;
+
+            } else {
+                // 3. Actualizamos el texto en la página SÓLO si el tiempo no ha terminado
+                elementoContador.textContent = tiempoRestante;
+            }
+        }
+
+        // Función que inicia el proceso
+        function iniciarCuentaAtras() {
+            // Usamos setInterval para llamar a la función 'actualizarYRedirigir' cada 1000ms (1 segundo)
+            // Guardamos el ID en 'intervaloID' para poder detenerlo más tarde.
+            intervaloID = setInterval(actualizarYRedirigir, 1000);
+        }
+
+        // Iniciamos la cuenta atrás inmediatamente. 
+        iniciarCuentaAtras();
+    </script>
+
+</body>
+
+</html>
