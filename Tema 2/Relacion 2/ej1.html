@@ -17,7 +17,7 @@
 
             // 1. Usamos setInterval para actualizar el contador cada segundo.
             // Función anónima tradicional como callback
-            const intervaloID = setInterval(function () {
+            let intervaloID = setInterval(function () {
                 console.log(` Contador: ${segundosRestantes} segundos`);
                 segundosRestantes--;
             }, 1000); // Se ejecuta cada 1000ms (1 segundo)
