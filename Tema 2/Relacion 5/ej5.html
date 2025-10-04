@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 5</title>
+</head>
+
+<body>
+
+    <p>Sobre el ejercicio T3_ej13, añade el código siguiente en el documento ventanaSecundaria.html:
+        · Añade el código necesario para que aparezca un tercer botón en la ventana principal y que cuando se pulse
+        sobre él se envíe un mensaje a la ventana secundaria:
+        · Comenta las líneas de código que consideres en el documento ventanaSecundaria.html
+    </p>
+
+
+    <!-- Botones originales del Ejercicio 2 -->
+    <button onclick="abrirVentanaSecundaria()">Abrir Ventana Secundaria</button>
+    <button onclick="cerrarVentanaDesdePrincipal()">Cerrar Ventana Secundaria (Desde Aquí)</button>
+
+    <!-- Nuevo botón añadido para el Ejercicio 5 -->
+    <button onclick="enviarMensajeSecundaria()">Envía un mensaje a la ventana secundaria</button>
+
+    <script>
+        // Declaramos variable global
+        let ventanaSecundaria = null;
+
+        /* --- FUNCIONES DE APERTURA Y CIERRE CON COMUNICACIÓN hechas en el ejercicio 2 --- */
+
+        function abrirVentanaSecundaria() {
+            // Si la ventana ya existe y no está cerrada, simplemente la enfocamos
+            if (ventanaSecundaria && !ventanaSecundaria.closed) {
+                ventanaSecundaria.focus();
+                return;
+            }
+
+            let opciones = 'width=450,height=250,left=100,top=100';
+            // Abrimos la ventana
+            ventanaSecundaria = window.open("", "VentanaEjercicio2", opciones);
+
+            if (!ventanaSecundaria) {
+                alert("El navegador bloqueó la ventana emergente.");
+                return;
+            }
+
+
+            // Función para recibir el mensaje desde la ventana principal
+            ventanaSecundaria.recibeMensaje = function (texto) {
+                // Obtenemos el elemento P por su ID
+                var objeto = this.document.getElementById("parrafo");
+                // Insertamos el texto recibido en el contenido del párrafo
+                objeto.innerHTML = texto;
+            };
+
+
+            // --- CONTENIDO HTML EN UNA SOLA LÍNEA ventana secundaria ---
+
+            let doc = ventanaSecundaria.document;
+            doc.open();
+           
+            doc.write(`<p id="parrafo">Mensaje desde la ventana principal</p><button onclick="window.close()">cerrar</button>`);
+            doc.close();
+
+            ventanaSecundaria.focus();
+        }
+
+        function cerrarVentanaDesdePrincipal() {
+            // Comprobamos la referencia y que no esté ya cerrada.
+            if (ventanaSecundaria && !ventanaSecundaria.closed) {
+                ventanaSecundaria.close();
+                ventanaSecundaria = null;
+                alert("Ventana secundaria cerrada desde la principal.");
+            } else {
+                alert("La ventana secundaria no está abierta o ya se cerró.");
+                ventanaSecundaria = null;
+            }
+        }
+
+        /* --- FUNCIÓN AÑADIDA PARA ENVIAR EL MENSAJE (Ejercicio 5) --- */
+
+        function enviarMensajeSecundaria() {
+            if (ventanaSecundaria && !ventanaSecundaria.closed) {
+                let mensaje = "Mensaje desde la ventana principal: ¡Mensaje recibido!";
+
+                // Llamamos a la función 'recibeMensaje' que inyectamos en la ventana secundaria.
+                ventanaSecundaria.recibeMensaje(mensaje);
+
+                ventanaSecundaria.focus();
+
+            } else {
+                alert("La ventana secundaria no está abierta. Ábrela primero para enviar el mensaje.");
+            }
+        }
+    </script>
+
+</body>
+
+</html>
