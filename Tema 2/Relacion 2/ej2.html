@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+</head>
+
+<body>
+    <p>Usando el objeto Date, sus métodos getHours, getMinutes y GetSeconds y el método setTimeout(),setInterval() crea
+        un reloj que se actualice cada segundo
+    </p>
+
+    <script>
+        function iniciarVisualizadorDeTiempo() {
+
+            // Función que se encarga de obtener y formatear la hora actual para su salida
+            function mostrarHoraActual() {
+
+                // 1. Obtener la hora actual usando el objeto Date
+                let tiempo = new Date();
+
+                // 2. Extraer las partes
+                let horas = tiempo.getHours();
+                let minutos = tiempo.getMinutes();
+                let segundos = tiempo.getSeconds();
+
+                // 3. Función auxiliar para asegurar el formato de doble dígito (ej: 09)
+                function formatearTiempo(unidad) {
+                    return unidad < 10 ? '0' + unidad : unidad;
+                }
+
+                // 4. Formatear la hora completa
+                const horaFormateada =
+                    formatearTiempo(horas) + ':' +
+                    formatearTiempo(minutos) + ':' +
+                    formatearTiempo(segundos);
+
+                // 5. Mostrar la hora en la consola
+                console.clear(); // Limpia la consola para mantener solo la hora actual
+                console.log(`[Hora Actual]: ${horaFormateada}`);
+            }
+
+            // Usamos setInterval() para llamar a 'mostrarHoraActual' cada 1000ms (1 segundo).
+            setInterval(mostrarHoraActual, 1000);
+
+            // Ejecutamos una vez inmediatamente para evitar el retardo inicial
+            mostrarHoraActual();
+        }
+
+        // Iniciar el proceso
+        iniciarVisualizadorDeTiempo();
+    </script>
+</body>
+
+</html>
