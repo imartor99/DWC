@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+</head>
+
+<body>
+
+    <p>Crea una nueva página que contenga el texto Haz clic aquí.
+        · Cuando el usuario haga clic sobre alguna parte del texto se han de generar cinco ventanas emergentes de
+        Google, de tamaño 350x350px.
+        · En cada ventana aparecerá el texto ventana 1, ventana 2… ventana 5.
+        · Cada ventana tendrá un botón Cerrar que permita cerrarla.
+    </p>
+
+    <h1>Ejercicio 3: Generar Cinco Ventanas</h1>
+
+    <!-- El texto que activará la función al hacer clic -->
+    <p onclick="abrirCincoVentanas()">
+        Haz clic aquí
+    </p>
+
+    <script>
+        function abrirCincoVentanas() {
+            let ANCHO = 350;
+            let ALTO = 350;
+            let opciones = `width=${ANCHO},height=${ALTO}`;
+
+            // Bucle para crear las 5 ventanas (i de 1 a 5)
+            for (let i = 1; i <= 5; i++) {
+
+                // Abrimos la ventana apuntando a Google
+                let nuevaVentana = window.open("https://www.google.com", `Ventana${i}`, opciones);
+
+                if (nuevaVentana) {
+                    // Contenido HTML nuevas ventanas en una sola línea.
+                    let contenidoHTML = '<p>Ventana ' + i + '</p><button onclick="window.close()">Cerrar</button>';
+
+                    // Inyectamos el contenido y sobrescribimos la página de Google
+                    nuevaVentana.document.open();
+                    nuevaVentana.document.write(contenidoHTML);
+                    nuevaVentana.document.close();
+
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>
