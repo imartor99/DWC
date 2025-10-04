@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+</head>
+
+<body>
+    <p>Utilizando el programa anterior haz que al llegar a 0 se cargue la página de google, para ello puedes utilizar el
+        objeto location.</p>
+
+    <script>
+        function contadorConRedireccionConsola() {
+            let segundosRestantes = 60;
+            let intervaloID;
+
+            // Función que se encarga de mostrar la cuenta y decrementar el valor
+            function actualizarContador() {
+                if (segundosRestantes >= 0) {
+                    console.clear(); // Limpia la consola en cada segundo
+                    console.log(`Contador: ${segundosRestantes} segundos`);
+                    segundosRestantes--;
+                }
+            }
+
+            // Ejecución inicial para mostrar 60 de inmediato
+            actualizarContador();
+
+            // 1. Usamos setInterval para llamar a actualizarContador cada segundo.
+            intervaloID = setInterval(actualizarContador, 1000);
+
+            // 2. Usamos setTimeout para detener el setInterval y redirigir.
+            // Usamos 61000 ms para que el contador tenga tiempo de mostrar el '0' antes de terminar.
+            const tiempoTotal = 61000;
+
+            setTimeout(function () {
+                // Detenemos el proceso repetitivo
+                clearInterval(intervaloID);
+
+                console.log("\n¡Tiempo terminado! Redirigiendo a Google...");
+
+                // Redirigir a Google
+                window.location.href = "https://www.google.com";
+
+            }, tiempoTotal);
+        }
+
+        // Iniciar el contador
+        contadorConRedireccionConsola();
+    </script>
+</body>
+
+</html>
