@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+
+<body>
+
+    <p>Define una función máximo que dados 4 valores devuelva el máximo de ellos.
+        Llámala con un ejemplo pidiendo los 4 valores al usuario.
+    </p>
+
+    <script>
+        function maximo(a, b, c, d) {
+            return Math.max(a, b, c, d);
+        }
+
+        const valor1 = parseFloat(prompt("Ingresa el primer número:"));
+        const valor2 = parseFloat(prompt("Ingresa el segundo número:"));
+        const valor3 = parseFloat(prompt("Ingresa el tercer número:"));
+        const valor4 = parseFloat(prompt("Ingresa el cuarto número:"));
+
+        // Valido los datos introducidos
+        if (isNaN(valor1) || isNaN(valor2) || isNaN(valor3) || isNaN(valor4)) {
+            console.log("Error: Asegúrate de ingresar 4 números válidos.");
+        } else {
+            const resultadoMaximo = maximo(valor1, valor2, valor3, valor4);
+
+            document.write(`Los valores ingresados son: ${valor1}, ${valor2}, ${valor3}, ${valor4}`);
+            document.write(`<br>`)
+            document.write(`El máximo de estos 4 valores es: ${resultadoMaximo}`);
+
+        }
+    </script>
+
+</body>
+
+</html>
