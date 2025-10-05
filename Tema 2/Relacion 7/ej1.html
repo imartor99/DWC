@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ubicación con Leaflet (CSS Mínimo)</title>
+
+    <!-- 1. CSS de Leaflet: Es necesario para que los tiles y el marcador se muestren correctamente -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <!-- Librería JavaScript de Leaflet -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Mi Ubicación Actual</h1>
+    <p id="status">Verificando geolocalización...</p>
+
+    <!-- Contenedor del mapa -->
+    <div id="map"></div>
+
+    <script>
+        let map;
+        const statusElement = document.getElementById('status');
+
+        // Función de éxito (llama a Leaflet)
+        function successCallback(position) {
+            // Se accede a la latitud y longitud, las coordenadas son en el sistema WGS84
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+
+            statusElement.textContent = `Ubicación obtenida: Latitud ${lat.toFixed(6)}, Longitud ${lon.toFixed(6)}`;
+            statusElement.style.color = 'green';
+
+            initializeLeafletMap(lat, lon);
+        }
+
+        // Función de error
+        function errorCallback(error) {
+            let mensaje;
+            statusElement.style.color = 'red';
+
+            switch (error.code) {
+                case GeolocationPositionError.PERMISSION_DENIED: // Código 1 
+                    // El usuario denegó el permiso o el contexto no es seguro (no HTTPS) 
+                    mensaje = "Error: Permiso denegado.";
+                    break;
+                case GeolocationPositionError.POSITION_UNAVAILABLE: // Código 2 
+                    mensaje = "Error: Posición no disponible.";
+                    break;
+                case GeolocationPositionError.TIMEOUT: // Código 3 
+                    // El tiempo de espera máximo ha expirado 
+                    mensaje = "Error: Solicitud expirada (Timeout).";
+                    break;
+            }
+            statusElement.textContent = mensaje;
+
+            // Centrar en un punto por defecto si falla la geolocalización.
+            initializeLeafletMap(0, 0, 2);
+        }
+
+        // Función de inicialización del Mapa Leaflet
+        function initializeLeafletMap(lat, lon, zoom = 15) {
+            if (!map) {
+                // Leaflet es una librería open-source para mapas interactivos
+                map = L.map('map').setView([lat, lon], zoom);
+            } else {
+                map.setView([lat, lon], zoom);
+            }
+
+            // Añade la capa de tiles de OpenStreetMap
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' // La atribución es requerida [8]
+            }).addTo(map);
+
+            if (zoom > 5) {
+                // Añade un marcador
+                L.marker([lat, lon])
+                    .addTo(map)
+                    .bindPopup("Tu ubicación")
+                    .openPopup();
+            }
+        }
+
+        // Punto de Entrada
+        window.onload = function () {
+            // La geolocalización proporciona acceso a la información de ubicación geográfica
+            if (navigator.geolocation) {
+                statusElement.textContent = "Geolocalización disponible. Solicitando posición...";
+
+                // PositionOptions define los parámetros, como enableHighAccuracy
+                const options = {
+                    enableHighAccuracy: true, // Pide la mayor precisión, aunque puede ser ignorado por el agente de usuario
+                    timeout: 10000,
+                    maximumAge: 0 // No se acepta posición en caché
+                };
+
+                // getCurrentPosition() solicita la ubicación "one-shot"
+                navigator.geolocation.getCurrentPosition(
+                    successCallback,
+                    errorCallback,
+                    options
+                );
+            } else {
+                statusElement.textContent = "Su navegador no soporta la API de Geolocalización.";
+                statusElement.style.color = 'red';
+            }
+        };
+
+    </script>
+
+</body>
+
+</html>
