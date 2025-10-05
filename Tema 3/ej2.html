@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+</head>
+
+<body>
+
+    <p>Crea una web desde la que se simule el lanzamiento de un dado de 6 caras.Para ello
+        define una función “lanzamiento” que devuelva un nº aleatorio entre 1 y 6.
+    </p>
+
+    <h1>Simulador de Dado de 6 Caras</h1>
+
+    <button onclick="mostrarResultado()">¡Lanzar Dado!</button>
+
+    <p>Presiona el botón para lanzar el dado.</p>
+
+    <script>
+        function lanzamiento() {
+            // Genera un entero aleatorio entre 1 y 6.
+            return Math.floor(Math.random() * 6) + 1;
+        }
+
+        function mostrarResultado() {
+            let valorDado = lanzamiento();
+
+            document.write(`<h1>Resultado del Lanzamiento</h1><br><p>El dado ha caído en: <strong>${valorDado}</strong></p>`);
+
+        }
+    </script>
+
+
+</body>
+
+</html>
