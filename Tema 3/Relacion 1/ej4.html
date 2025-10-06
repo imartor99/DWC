@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4</title>
+</head>
+
+<body>
+
+    <p>Crea una web para calcular el volumen de una esfera. Para ello diseña una función
+        que dado el radio de ésta devuelva el volumen.
+    </p>
+
+    <h1>Calculadora de Volumen de Esfera</h1>
+    <p>Presiona el botón para introducir el radio y calcular el volumen.</p>
+
+    <button onclick="iniciarCalculo()">Calcular Volumen</button>
+
+    <script>
+        // Declaramos PI con const ya que es un valor fijo
+        const PI = Math.PI;
+
+        // Función que calcula el volumen de una esfera dado su radio.
+        // La fórmula es V = (4/3) * PI * r^3
+
+        function calcularVolumenEsfera(radio) {
+            // El radio (r) se eleva al cubo (r^3)
+            let radioCubo = Math.pow(radio, 3);
+
+            // Calculamos (4/3) * PI * r^3
+            return (4 / 3) * PI * radioCubo;
+        }
+
+        // Función principal que pide el radio al usuario y muestra el resultado con document.write().
+
+        function iniciarCalculo() {
+            // Pedimos el radio al usuario
+            let radioInput = prompt("Introduce el radio de la esfera(en cm):");
+
+            // Convertimos la entrada a un número
+            let radio = parseFloat(radioInput);
+
+            // Validamos la entrada
+            if (isNaN(radio) || radio <= 0) {
+                alert("Por favor, introduce un valor numérico positivo para el radio.");
+                return;
+            }
+
+            // Llamamos a la función para obtener el volumen
+            let volumen = calcularVolumenEsfera(radio);
+
+            // Redondeamos el volumen para una mejor visualización
+            let volumenRedondeado = volumen.toFixed(4);
+
+            document.write(`<h1>Resultado del Cálculo</h1><p>El radio introducido es: <strong>${radio}</strong></p><h2>El Volumen de la Esfera es:</h2><p style="font-size: 24px; font-weight: bold;">V = ${volumenRedondeado} cm3</p><p style="font-size: 14px;">( Fórmula: (4/3) * &pi; * r³ )</p><button onclick="window.location.reload()">Nuevo Cálculo</button>`);
+        }
+    </script>
+
+</body>
+
+</html>
