@@ -14,10 +14,47 @@
         de ocurrencias de cada uno de los valores.
     </p>
 
+    <h1>Generador de Números Aleatorios</h1>
+    <p>Presiona el botón para generar **N** números al azar. ¡Atención! El resultado **reemplazará** esta página.</p>
+
+    <button onclick="generarArrayAleatorio()">Generar y Mostrar Array</button>
+
+    <hr>
+
     <script>
         
-    </script>
+        function obtenerNumeroAleatorio() {
+            // Genera un número entre 1 y 100.
+            return Math.floor(Math.random() * 100) + 1;
+        }
 
+        function generarArrayAleatorio() {
+            // 1. Pedir el valor de N al usuario
+            const nInput = prompt("Introduce cuántos números aleatorios (N) deseas generar:");
+
+            // Convertir la entrada a un número entero.
+            let N = parseInt(nInput);
+
+            // Validar la entrada
+            if (isNaN(N) || N <= 0) {
+                alert("Por favor, introduce un número válido y positivo para N.");
+                return; // Detiene la función
+            }
+
+            // 2. Crear un array vacío
+            let miArray = [];
+
+            // 3. Generar N números al azar y guardarlos en el array
+            for (let i = 0; i < N; i++) {
+                // Añadimos el nuevo número al array usando push()
+                miArray.push(obtenerNumeroAleatorio());
+            }
+
+            let contenidoHTML = `<h1>Array Generado con ${N} Elementos</h1><p>El array resultante es:</p><pre>[ ${miArray.join(", ")} ]</pre><button onclick="window.location.reload()">Volver (Recargar)</button>`;
+
+            document.write(contenidoHTML);
+        }
+    </script>
 </body>
 
 </html>
