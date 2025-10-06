@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 5</title>
+</head>
+
+<body>
+
+    <p>Mejora el ejercicio anterior permitiendo calcular también el área de un circulo.</p>
+
+    <h1>Calculadora de Volumen de Esfera y Área de Círculo</h1>
+    <p>Presiona el botón para introducir el radio (en cm) y calcular ambas propiedades.</p>
+
+    <button onclick="iniciarCalculo()">Calcular</button>
+
+    <script>
+        // Declaramos PI con const ya que es un valor fijo
+        const PI = Math.PI;
+
+        function calcularVolumenEsfera(radio) {
+            // La fórmula es V = (4/3) * PI * r^3
+            let radioCubo = Math.pow(radio, 3);
+            return (4 / 3) * PI * radioCubo;
+        }
+
+        function calcularAreaCirculo(radio) {
+            // La fórmula es A = PI * r^2
+            let radioCuadrado = Math.pow(radio, 2);
+            return PI * radioCuadrado;
+        }
+
+        function iniciarCalculo() {
+            // Pedimos el radio al usuario
+            let radioInput = prompt("Introduce el radio (en cm):");
+
+            // Convertimos la entrada a un número
+            let radio = parseFloat(radioInput);
+
+            // Validamos la entrada
+            if (isNaN(radio) || radio <= 0) {
+                alert("Por favor, introduce un valor numérico positivo para el radio.");
+                return;
+            }
+
+            // Llamamos a las funciones para obtener ambos resultados
+            let volumen = calcularVolumenEsfera(radio);
+            let area = calcularAreaCirculo(radio);
+
+            // Redondeamos los resultados para una mejor visualización
+            let volumenRedondeado = volumen.toFixed(4); // Mostrar con 4 decimales
+            let areaRedondeada = area.toFixed(4); // Mostrar con 4 decimales
+
+            // Usamos document.write() para sobrescribir la página con el resultado
+            document.write(`<h1>Resultado del Cálculo</h1><p>El radio introducido es: <strong>${radio} cm</strong></p><hr><h2>1. Volumen de la Esfera:</h2><p>V = ${volumenRedondeado} cm³</p><p>( Fórmula: (4/3) &middot; &pi; &middot; r³ )</p><hr><h2>2. Área del Círculo:</h2><p style="font-size: 24px; font-weight: bold;">A = ${areaRedondeada} cm²</p><p style="font-size: 14px;">( Fórmula: &pi; &middot; r² )</p><button onclick="window.location.reload()">Nuevo Cálculo</button>`);
+        }
+    </script>
+
+</body>
+
+</html>
