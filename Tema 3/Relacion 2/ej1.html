@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+    <script src="/Tema 3/Relacion 2/funciones.js"></script>
+</head>
+
+<body>
+
+    <p>Realiza un script que solicite 5 números al usuario, almacenaremos estos números en un array y posteriormente
+        ofreceremos la siguiente información:
+        Valor mínimo
+        Valor máximo
+        Valor medio.
+    </p>
+
+    <script>
+
+        let val1 = parseInt(prompt('Introduce el número 1: '));
+        let val2 = parseInt(prompt('Introduce el número 2: '));
+        let val3 = parseInt(prompt('Introduce el número 3: '));
+        let val4 = parseInt(prompt('Introduce el número 4: '));
+        let val5 = parseInt(prompt('Introduce el número 5: '));
+
+        const numeros = [val1, val2, val3, val4, val5];
+
+        valores(numeros);
+
+    </script>
+
+</body>
+
+</html>
