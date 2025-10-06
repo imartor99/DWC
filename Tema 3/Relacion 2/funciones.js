@@ -15,3 +15,11 @@ function valores(arr1) {
     console.log('Valor mínimo: ' + valorMinimo);
     console.log('Valor medio: ' + valorMedio.toFixed(2));
 }
+
+function existe(ele,arr1){
+    if(ele in arr1){
+        console.log('EL color ' + ele + ' moradoexiste en el array')
+    }else{
+        console.log('EL color ' + ele + ' no existe en el array')
+    }
+}
