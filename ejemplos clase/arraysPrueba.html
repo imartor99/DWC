@@ -33,13 +33,27 @@
                 return 1;
             }
         }
-        
+
         elementos.sort(ordenarElementos);
 
         console.log(elementos);
 
-        
 
+        // FIND ----------------------------------------------------------------------------------------------
+     
+
+        let arAlumnnos = [{ nombre: "Diana", nota: 8 }, { nombre: "Lucas", nota: 4 }, { nombre: "Cristina", nota: 9 }];
+
+
+        for(i=0;i<arAlumnnos.length;i++){
+            document.write("<br>", arAlumnnos[i].nombre, arAlumnnos[i].nota);
+        }
+
+        let valor = arAlumnnos.find(function(arg){
+            return arg.nota>5;  
+        })
+
+        document.write("Alumno aprobado: ", valor.nombre)
     </script>
 
 </body>
