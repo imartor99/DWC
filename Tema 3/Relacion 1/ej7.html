@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 7</title>
+</head>
+
+<body>
+
+    <h1>Factorial de 1 a 10</h1>
+    <p>Presiona el botón para generar la tabla de factoriales (N!).</p>
+
+    <button onclick="generarTablaFactoriales()">Generar Tabla</button>
+
+    <script>
+        // Función recursiva para calcular el factorial.
+        function calcularFactorial(n) {
+            // Condición de parada
+            if (n <= 1) {
+                return 1;
+            }
+
+            // Paso Recursivo
+            return n * calcularFactorial(n - 1);
+        }
+
+        function generarTablaFactoriales() {
+            let htmlContent = `
+                <h1>Tabla de Factoriales (1! a 10!)</h1>
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>Número (N)</th>
+                            <th>Factorial (N!)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            // Bucle para calcular y generar las filas de N = 1 hasta N = 10.
+            for (let i = 1; i <= 10; i++) {
+                let resultadoFactorial = calcularFactorial(i);
+
+                htmlContent += `
+                    <tr>
+                        <td>${i}</td>
+                        <td>${resultadoFactorial}</td>
+                    </tr>
+                `;
+            }
+
+            htmlContent += `
+                    </tbody>
+                </table>
+                <br>
+                <button onclick="window.location.reload()">Limpiar página</button>
+            `;
+
+            // Sobrescribe la página con la tabla.
+            document.write(htmlContent);
+        }
+    </script>
+
+
+</body>
+
+</html>
