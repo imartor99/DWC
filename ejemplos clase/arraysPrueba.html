@@ -53,7 +53,24 @@
             return arg.nota>5;  
         })
 
-        document.write("Alumno aprobado: ", valor.nombre)
+        document.write("<br>Alumno aprobado: ", valor.nombre)
+
+
+        // FIND casero ---------------------------------------------------------------------------------------------
+        function localiza(arg){
+            return arg>=5;
+        }
+
+        function encuentra(arra1,flocaliza){
+            let objeto
+            for(i=0;i<arra1.length;i++){
+                valor = arra1[i];
+                if(flocaliza(objeto)==true){
+                    return objeto;
+                }
+            }
+            return undefinied;
+        }
     </script>
 
 </body>
