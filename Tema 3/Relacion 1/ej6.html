@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 6</title>
+</head>
+
+<body>
+
+    <h1>Calculadora de Potencia Recursiva</h1>
+    <p>Presiona el botón para introducir la base y el exponente.</p>
+
+    <button onclick="iniciarCalculoPotencia()">Calcular Potencia</button>
+
+    <script>
+
+        // Función recursiva para calcular la potencia (base^exponente).
+        function calcularPotenciaRecursiva(base, exponente) {
+
+            //La condición de parada
+            if (exponente === 0) {
+                return 1;
+            }
+            // Paso Recursivo
+            return base * calcularPotenciaRecursiva(base, exponente - 1);
+        }
+
+        function iniciarCalculoPotencia() {
+            // Pedimos la base y el exponente al usuario
+            let baseInput = prompt("Introduce la BASE:");
+            let exponenteInput = prompt("Introduce el EXPONENTE:");
+
+            let base = parseInt(baseInput);
+            let exponente = parseInt(exponenteInput);
+
+            // Validamos
+            if (isNaN(base) || isNaN(exponente) || exponente < 0) {
+                alert("Por favor, introduce números válidos. El exponente debe ser un entero no negativo.");
+                return;
+            }
+
+            // Llamamos a la función recursiva
+            let resultado = calcularPotenciaRecursiva(base, exponente);
+
+            document.write(`<h1>Resultado de la Potencia</h1><p>Cálculo: <strong>${base} elevado a ${exponente}</strong></p><p>Resultado: ${resultado}</p><button onclick="window.location.reload()">Nuevo Cálculo</button>`);
+        }
+    </script>
+
+</body>
+
+</html>
