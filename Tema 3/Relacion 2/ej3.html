@@ -5,19 +5,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejercicio 3</title>
-    <script src="/Tema 3/Relacion 2/funciones.js"></script>
 </head>
 
 <body>
+    <h1>Generador de Array Aleatorio con Límite (20 Elementos)</h1>
     <p>Crear un array vacío, luego generar 20 números al azar (utiliza random del objeto Math ) y guardarlos en un
-        array, N es introducido por el usuario.
+        array, **N** es introducido por el usuario y es el límite máximo de los números generados aleatoriamente.
     </p>
 
     <script>
         const array1 = [];
 
-        n = parseInt(prompt(Introduce ))
+        // n: Límite máximo introducido por el usuario.
+        const n = parseInt(prompt("Introduce el límite máximo (N) para generar 20 números aleatorios:"));
+
+        // Validar que n sea un número positivo.
+        if (isNaN(n) || n <= 0) {
+            document.write(`
+                <h1>Error</h1>
+                <p>Límite no válido. Introduce un número entero positivo.</p>
+            `);
+        } else {
+            const totalNumeros = 20;
+
+            // Generar 20 números enteros entre 0 y n (inclusivos).
+            for (let i = 0; i < totalNumeros; i++) {
+                const numeroAleatorio = Math.floor(Math.random() * (n + 1));
+
+                array1.push(numeroAleatorio);
+            }
+
+            // Mostrar la salida usando .join(', ') para convertir el array en una cadena limpia.
+            document.write(`
+                <h2>Resultados</h2>
+                <p>Límite Máximo (N): ${n}</p>
+                <p>Se han generado ${totalNumeros} números entre 0 y ${n}:</p>
+                
+                <p>
+                    <strong>[ ${array1.join(', ')} ]</strong>
+                </p>
+            `);
+        }
     </script>
 </body>
+
+</html>
 
 </html>
