@@ -48,14 +48,14 @@
             statusElement.style.color = 'red';
 
             switch (error.code) {
-                case GeolocationPositionError.PERMISSION_DENIED: // Código 1 
+                case GeolocationPositionError.PERMISSION_DENIED:
                     // El usuario denegó el permiso o el contexto no es seguro (no HTTPS) 
                     mensaje = "Error: Permiso denegado.";
                     break;
-                case GeolocationPositionError.POSITION_UNAVAILABLE: // Código 2 
+                case GeolocationPositionError.POSITION_UNAVAILABLE: 
                     mensaje = "Error: Posición no disponible.";
                     break;
-                case GeolocationPositionError.TIMEOUT: // Código 3 
+                case GeolocationPositionError.TIMEOUT: 
                     // El tiempo de espera máximo ha expirado 
                     mensaje = "Error: Solicitud expirada (Timeout).";
                     break;
@@ -69,7 +69,6 @@
         // Función de inicialización del Mapa Leaflet
         function initializeLeafletMap(lat, lon, zoom = 15) {
             if (!map) {
-                // Leaflet es una librería open-source para mapas interactivos
                 map = L.map('map').setView([lat, lon], zoom);
             } else {
                 map.setView([lat, lon], zoom);
