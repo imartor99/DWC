@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+
+        //Declaro un array con 5 objetos literales
+        //Luego hacer  encuentra(codigo), ordenaNombre, ordenaPrecio, filtra(minValor)
+        const arr1=[
+
+            {
+                codigo : 'A001',
+                nombre : 'fregona',
+                precio : 0.80,
+                muestra: ()=> {document.write(this.codigo, this.nombre, this.precio, this.pvp(), this.dto())},
+                pvp: precio => precio*1.21,
+                dto : precio => precio*0.1,
+            },
+
+            {
+                codigo : 'A002',
+                nombre : 'mopa',
+                precio : 1.80,
+                muestra: ()=> {document.write(this.codigo, this.nombre, this.precio, this.pvp(), this.dto())},
+                pvp: precio => precio*1.21,
+                dto : precio => precio*0.1,
+            },
+
+            {
+                codigo : 'A003',
+                nombre : 'cubo',
+                precio : 1,
+                muestra: ()=> {document.write(this.codigo, this.nombre, this.precio, this.pvp(), this.dto())},
+                pvp: precio => precio*1.21,
+                dto : precio => precio*0.1,
+            },
+
+            {
+                codigo : 'A004',
+                nombre : 'recogedor',
+                precio : 1.10,
+                muestra: ()=> {return (this.codigo, this.nombre, this.precio, this.pvp(), this.dto())},
+                pvp: precio => precio*1.21,
+                dto : precio => precio*0.1,
+            },
+
+            {
+                codigo : 'A005',
+                nombre : 'escoba',
+                precio : 1.20,
+                muestra: ()=> {return (this.codigo, this.nombre, this.precio, this.pvp(), this.dto())},
+                pvp: precio => precio*1.21,
+                dto : precio => precio*0.1,
+            }
+
+        ];
+
+        function encuentra(cod){
+            for(i=0;i<arr1.length;i++){
+                if(arr1[i].codigo = cod){
+                    return arr1[i];
+                }else{
+                    
+                }
+            }
+        }
+
+        // Otra manera
+
+        const arr2 = [];
+
+        
+    </script>
+    
+</body>
+</html>
