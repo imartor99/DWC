@@ -17,7 +17,34 @@
 
     <script>
 
-    
+        const array1 = ['manzana', 'banana', 'pera', 'uva', 'kiwi']; // Array A
+        const array2 = ['uva', 'pera', 'naranja', 'fresa', 'mango']; // Array B
+
+        // Intersección: Elementos que están en A Y en B
+        const arrayInterseccion = array1.filter(palabra => array2.includes(palabra));
+
+        // Diferencia (A-B): Elementos que están en A Y NO en B
+        const arrayDiferencia = array1.filter(palabra => !array2.includes(palabra));
+
+        // Unión: Combinación de arrays sin duplicados
+
+        // Concatenar arrays (permite duplicados)
+        const arrayCombinado = array1.concat(array2);
+
+        // Filtrar el array combinado para eliminar duplicados
+        const arrayUnion = arrayCombinado.filter((palabra, indice) => {
+            // Si la primera posición donde aparece 'palabra' (indexOf) es igual a su posición actual ('indice'),
+            // significa que no es un duplicado, y se mantiene.
+            return arrayCombinado.indexOf(palabra) === indice;
+        });
+
+        document.write("Array A: ", array1); 
+        document.write("<br>Array B: ", array2);
+        document.write("<br>---");
+        document.write("<br>1. Intersección: ", arrayInterseccion);
+        document.write("<br>2. Diferencia (A-B): ", arrayDiferencia);
+        document.write("<br>3. Unión: ", arrayUnion);
+
     </script>
 
 </body>
