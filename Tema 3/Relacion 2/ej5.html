@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 5</title>
+    <script src="/Tema 3/Relacion 2/funciones.js"></script>
+</head>
+
+<body>
+
+    <p>Utilizando el método random del objeto Math carga con valores aleatorios un array de 20 elementos con valores
+        enteros entre el 0 y el 100. Ten en cuenta que random devuelve un número flotante entre 0 y 1. Una vez cargado
+        muestra los datos del array por pantalla.
+        Tras ello muestra la información del ejercicio anterior sobre los valores de dicho array, es decir:
+        Valor mínimo
+        Valor máximo
+        Valor medio.
+    </p>
+
+    <script>
+        // Definición de constantes para el ejercicio
+        const tam_array = 20;
+        const valor_max = 100;
+
+        // Cargar el array con valores aleatorios (0 a 100)
+        const arrayDatos = generarArrayAleatorio(tam_array, valor_max);
+
+        document.write("<h2>Ejercicio 2: Análisis Estadístico de Array</h2>");
+
+        document.write("<h3>Array Generado (" + arrayDatos.length + " elementos)</h3>");
+
+        // Utilizo .join(', ') para convertir el array en una cadena de texto legible 
+        document.write("<p><b>Datos:</b> [" + arrayDatos.join(', ') + "]</p>");
+
+        // 2. Obtener los valores estadísticos
+        const valorMinimo = calcularMinimo(arrayDatos);
+        const valorMaximo = calcularMaximo(arrayDatos);
+        const valorMedio = calcularMedia(arrayDatos);
+
+        document.write("<h3>Resultados del Análisis Estadístico</h3>");
+
+        document.write("<ul>");
+        document.write("<li><b>Valor Mínimo:</b> " + valorMinimo + "</li>");
+        document.write("<li><b>Valor Máximo:</b> " + valorMaximo + "</li>");
+        document.write("<li><b>Valor Medio:</b> " + valorMedio + "</li>");
+        document.write("</ul>");
+
+        // Muestra en la consola (buena práctica de depuración)
+        console.log("Array de datos:", arrayDatos);
+        console.log("Mínimo:", valorMinimo);
+        console.log("Máximo:", valorMaximo);
+        console.log("Media:", valorMedio);
+    </script>
+</body>
+
+</html>
