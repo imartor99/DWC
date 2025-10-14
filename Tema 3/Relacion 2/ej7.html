@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/Tema 3/Relacion 2/funciones.js"></script>
+    <title>Ejercicio 7</title>
+</head>
+
+<body>
+
+    <p>Utilizando el método random del objeto Math carga con valores aleatorios un array de 20 elementos con valores
+        enteros entre el 0 y el 100. Muestra los valores sin ordenar y ordenados (eliminando duplicados), para ello
+        deberás implementar alguno de los algoritmos de ordenación, se recomienda el burbuja por su fácil
+        implementación.
+    </p>
+
+    <script>
+        //Parametros para el array
+        const tam_array = 20;
+        const valor_max = 100;
+
+        //Cargamos el array
+        const array1 = generarArrayAleatorio(tam_array, valor_max);
+
+        document.write("<h3>Array Generado (" + array1.length + " elementos)</h3>");
+
+        // Utilizo .join(', ') para convertir el array en una cadena de texto legible 
+        document.write("<p><b>Datos array sin ordenar:</b> [" + array1.join(', ') + "]</p>");
+
+        // Operaciones de ordenación y quitar duplicados //
+
+        // Llamamos a la función que ordena y elimina duplicados
+        const arrayOrdenadoSinDuplicados = ordenarYEliminarDuplicados(array1);
+
+        document.write("<h3>Resultados Finales tras aplicar implementación</h3>");
+
+        // El array final mostrará los valores ordenados y sin duplicados.
+        document.write("<p><b>Datos ordenados (sin duplicados):</b> [" + arrayOrdenadoSinDuplicados.join(', ') + "]</p>");
+
+    </script>
+
+
+
+</body>
+
+</html>

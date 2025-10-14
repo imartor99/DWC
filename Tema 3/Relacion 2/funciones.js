@@ -100,3 +100,44 @@ function buscarPalabraEnDocumento() {
 
     document.writeln('<button onclick="window.location.reload()">Volver a cargar la página</button>');
 }
+
+//EJERCICIO 7
+//Para generar el array aleatorio tengo una funcion del ejercicio 5
+
+//Funcion metodo burbuja compara compara posiciones e intercambia si es necesario
+function ordenarBurbuja(array1) {
+    // Creamos una copia del arreglo
+    const copiaArreglo = array1.slice(); 
+    let n = copiaArreglo.length;
+    let intercambiado; 
+
+    do {
+        intercambiado = false;
+        for (let i = 0; i < n - 1; i++) {
+            if (copiaArreglo[i] > copiaArreglo[i + 1]) {
+                // Intercambio de elementos
+                [copiaArreglo[i], copiaArreglo[i + 1]] = [copiaArreglo[i + 1], copiaArreglo[i]];
+                intercambiado = true;
+            }
+        }
+        n--; 
+    } while (intercambiado);
+    
+    return copiaArreglo;
+}
+
+function eliminarDuplicados(arregloConDuplicados) {
+    // 1. Crear un Set a partir del arreglo, ya que Set no permite duplicados.
+    const conjuntoSinDuplicados = new Set(arregloConDuplicados); 
+
+    // 2. Convertir el Set de vuelta a un Array usando Array.from.
+    return Array.from(conjuntoSinDuplicados); 
+}
+
+function ordenarYEliminarDuplicados(array1) {
+    // 1. Ordenar usando el algoritmo de burbuja implementado.
+    const arregloOrdenado = ordenarBurbuja(array1); 
+
+    // 2. Eliminar duplicados.
+    return eliminarDuplicados(arregloOrdenado);
+}
