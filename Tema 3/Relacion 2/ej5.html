@@ -25,19 +25,19 @@
         const valor_max = 100;
 
         // Cargar el array con valores aleatorios (0 a 100)
-        const arrayDatos = generarArrayAleatorio(tam_array, valor_max);
+        const array1 = generarArrayAleatorio(tam_array, valor_max);
 
         document.write("<h2>Ejercicio 2: Análisis Estadístico de Array</h2>");
 
-        document.write("<h3>Array Generado (" + arrayDatos.length + " elementos)</h3>");
+        document.write("<h3>Array Generado (" + array1.length + " elementos)</h3>");
 
         // Utilizo .join(', ') para convertir el array en una cadena de texto legible 
-        document.write("<p><b>Datos:</b> [" + arrayDatos.join(', ') + "]</p>");
+        document.write("<p><b>Datos:</b> [" + array1.join(', ') + "]</p>");
 
         // 2. Obtener los valores estadísticos
-        const valorMinimo = calcularMinimo(arrayDatos);
-        const valorMaximo = calcularMaximo(arrayDatos);
-        const valorMedio = calcularMedia(arrayDatos);
+        const valorMinimo = calcularMinimo(array1);
+        const valorMaximo = calcularMaximo(array1);
+        const valorMedio = calcularMedia(array1);
 
         document.write("<h3>Resultados del Análisis Estadístico</h3>");
 
