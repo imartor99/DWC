@@ -98,8 +98,7 @@
                     errorCallback
                 );
             } else {
-                statusElement.textContent = "🚫 Su navegador no soporta la API de Geolocalización.";
-                statusElement.style.color = 'red';
+                statusElement.textContent = "Su navegador no soporta la API de Geolocalización.";
                 // Muestra el mapa global de todos modos
                 initializeLeafletMap(0, 0, 2);
             }
