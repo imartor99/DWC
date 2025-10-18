@@ -87,3 +87,18 @@ function calcularEdadMedia(arrayClase) {
     // Devolvemos la media redondeada a un decimal.
     return parseFloat(media.toFixed(1));
 }
+
+// EJERCICIO 4
+
+function obtenerEstudianteAlAzar(arrayClase) {
+    // Genera un índice aleatorio entre 0 (incluido) y la longitud del array (excluido).
+    const indiceAleatorio = Math.floor(Math.random() * arrayClase.length);
+
+    // Obtiene la cadena completa del estudiante en esa posición.
+    const estudianteCompleto = arrayClase[indiceAleatorio];
+
+    // Separa el nombre (índice 0) y lo limpia de espacios.
+    const nombre = estudianteCompleto.split(',')[0].trim();
+
+    return nombre;
+}
