@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="funciones.js"></script>
+    <title>Ejercicio 2</title>
+</head>
+
+<body>
+
+    <h1>Cálculo de Notas</h1>
+
+    <script>
+        // Definición del array 'clase' en el HTML.
+        const clase = [
+            "Angel Garcia, 20, 6, 7, 10",
+            "Maria Lopez, 21, 8, 5, 9",
+            "Juan Perez, 20, 3, 4, 5",
+            "Laura Diaz, 22, 9, 9, 9",
+            "Pedro Sanchez, 19, 7, 8, 6"
+        ];
+
+        document.write("<h2>Pruebas de la Función obtenerNota:</h2>");
+
+        // Prueba 1: Nota específica (Estudiante 0, Trimestre 2)
+        let notaT2 = obtenerNota(clase, 0, 2);
+        document.write(`<p>Angel Garcia (Nota T2): <strong>${notaT2}</strong></p>`);
+
+        // Prueba 2: Nota específica (Estudiante 3, Trimestre 1)
+        let notaT1 = obtenerNota(clase, 3, 1);
+        document.write(`<p>Laura Diaz (Nota T1): <strong>${notaT1}</strong></p>`);
+
+        // Prueba 3: Nota media (Estudiante 4, sin especificar trimestre)
+        // La función debe devolver la media de las notas
+        let mediaPedro = obtenerNota(clase, 4);
+        document.write(`<p>Pedro Sanchez (Media): <strong>${mediaPedro}</strong></p>`);
+
+        // Prueba 4: Nota media (Estudiante 2, sin especificar trimestre)
+        let mediaJuan = obtenerNota(clase, 2);
+        document.write(`<p>Juan Perez (Media): <strong>${mediaJuan}</strong></p>`);
+    </script>
+
+</body>
+
+</html>
