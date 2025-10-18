@@ -4,55 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="funciones.js"></script>
     <title>Ejercicio 1</title>
 </head>
 
 <body>
 
-    <p>Diseña una web que cree un Array llamado clase que contenga información de una clase.
-        Cada elemento del array debe ser una tupla de 4 campos: nombre, edad, nota primer
-        trimestre, nota segundo trimestre y nota tercer trimestre (todos separados por comas). Por
-        ejemplo: clase[0] = “Angel Garcia, 20, 6, 7, 10”
-    </p>
-
-    <h1>Información de la Clase (Registros de Alumnos)</h1>
+    <h1>Array Clase</h1>
 
     <script>
-        // Creo Array 'clase'
-        const clase = [];
 
-        // Añado elementos al array
-        clase.push("Angel Garcia, 20, 6, 7, 10");
-        clase.push("Elena López, 21, 8, 8, 9");
-        clase.push("Juan Pérez, 19, 5, 4, 6");
-        clase.push("Sofía Ruiz, 20, 9, 9, 10");
-        clase.push("David Giménez, 20, 7, 7, 7");
+        const clase = [
+            "Angel Garcia, 20, 6, 7, 10",
+            "Maria Lopez, 21, 8, 5, 9",
+            "Juan Perez, 20, 3, 4, 5",
+            "Laura Diaz, 22, 9, 9, 9",
+            "Pedro Sanchez, 19, 7, 8, 6"
+        ];
 
-        document.write("<h2>Array 'clase' creado y sus elementos:</h2>");
-
-        // forEach para recorrer el array
-        clase.forEach((registro, indice) => {
-            document.write(`<p>clase[${indice}] = "${registro}"</p>`);
-        });
-
-        // Acceder al primer elemento (índice 0) del array 'clase', el cual SÍ es una cadena.
-        const primerRegistroString = clase;
-
-        // Uso .split(',') en la cadena (String)
-        const campos = primerRegistroString.split(',');
-
-
-        document.write("<h3>Desglose del Primer Registro (usando índices y .split(',')):</h3>");
-        document.write(`<ul>`);
-        document.write(`<li>Nombre: ${campos[0].trim()}</li>`);
-        document.write(`<li>Edad: ${campos[2].trim()}</li>`);
-        document.write(`<li>Nota T1: ${campos[5].trim()}</li>`);
-        document.write(`<li>Nota T2: ${campos[6].trim()}</li>`);
-        document.write(`<li>Nota T3: ${campos[7].trim()}</li>`);
-        document.write(`</ul>`);
-
+        mostrarClase(clase);
     </script>
-
 
 </body>
 
