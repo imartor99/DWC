@@ -107,9 +107,9 @@ function buscarPalabraEnDocumento() {
 //Funcion metodo burbuja compara compara posiciones e intercambia si es necesario
 function ordenarBurbuja(array1) {
     // Creamos una copia del arreglo
-    const copiaArreglo = array1.slice(); 
+    const copiaArreglo = array1.slice();
     let n = copiaArreglo.length;
-    let intercambiado; 
+    let intercambiado;
 
     do {
         intercambiado = false;
@@ -120,23 +120,23 @@ function ordenarBurbuja(array1) {
                 intercambiado = true;
             }
         }
-        n--; 
+        n--;
     } while (intercambiado);
-    
+
     return copiaArreglo;
 }
 
 function eliminarDuplicados(arregloConDuplicados) {
     // 1. Crear un Set a partir del arreglo, ya que Set no permite duplicados.
-    const conjuntoSinDuplicados = new Set(arregloConDuplicados); 
+    const conjuntoSinDuplicados = new Set(arregloConDuplicados);
 
     // 2. Convertir el Set de vuelta a un Array usando Array.from.
-    return Array.from(conjuntoSinDuplicados); 
+    return Array.from(conjuntoSinDuplicados);
 }
 
 function ordenarYEliminarDuplicados(array1) {
     // 1. Ordenar usando el algoritmo de burbuja implementado.
-    const arregloOrdenado = ordenarBurbuja(array1); 
+    const arregloOrdenado = ordenarBurbuja(array1);
 
     // 2. Eliminar duplicados.
     return eliminarDuplicados(arregloOrdenado);
@@ -145,25 +145,109 @@ function ordenarYEliminarDuplicados(array1) {
 // EJERCICIO 8
 function procesarNombresOrdenados() {
     // Solicita al usuario la cadena de nombres.
-    let nombresInput = prompt("Introduce los nombres separados por comas (Ej: Ana,Beto,Carlos):"); 
+    let nombresInput = prompt("Introduce los nombres separados por comas (Ej: Ana,Beto,Carlos):");
 
     // Comprueba si el usuario introdujo algo o canceló.
     if (nombresInput) {
         // 1. Convertir la cadena de texto a un array usando split().
         // El método split() convierte la cadena en un array basado en el separador proporcionado.
-        let arrayNombres = nombresInput.split(','); 
-        
+        let arrayNombres = nombresInput.split(',');
+
         // Limpieza de espacios (trim()) para cada nombre usando map().
-        let nombresLimpios = arrayNombres.map(nombre => nombre.trim()); 
-        
+        let nombresLimpios = arrayNombres.map(nombre => nombre.trim());
+
         // 2. Ordenar el array alfabéticamente usando sort().
-        nombresLimpios.sort(); 
+        nombresLimpios.sort();
 
         // 3. Mostrar el resultado en el documento HTML.
         // join() convierte el array de vuelta a una cadena con el separador especificado (<br>).
         document.write("<h1>Lista de Nombres Ordenada</h1>");
-        document.write("<p>" + nombresLimpios.join("<br>") + "</p>"); 
+        document.write("<p>" + nombresLimpios.join("<br>") + "</p>");
     } else {
         document.write("No se introdujo ningún dato.");
     }
+}
+
+// EJERCICIO 9
+function analizarCadenaDePalabras() {
+    // Solicita la cadena de texto al usuario.
+    let textoInput = prompt("Introduce una cadena de texto (frase, párrafo, etc.):");
+
+    // Verifica la entrada.
+    if (!textoInput) {
+        document.write("No se introdujo texto para analizar.");
+        return;
+    }
+
+    // Convertir la cadena en un array de palabras.
+    // .filter() elimina cadenas vacías que resulten de múltiples espacios. 
+    let arrayPalabras = textoInput.split(' ').filter(palabra => palabra.trim() !== '');
+
+    if (arrayPalabras.length === 0) {
+        document.write("El texto introducido no contiene palabras válidas.");
+        return;
+    }
+
+    // Abrir una nueva ventana.
+    let nuevaVentana = window.open("", "_blank", "width=800,height=550");
+
+    if (!nuevaVentana) {
+        alert("El bloqueador de pop-ups impidió abrir la ventana de resultados.");
+        return;
+    }
+
+    // Extracción y procesamiento de información.
+    // Número de palabras, usando la propiedad length. 
+    let numPalabras = arrayPalabras.length;
+
+    // Primera palabra (índice 0) y Última palabra (índice length - 1).
+    let primeraPalabra = arrayPalabras;
+    let ultimaPalabra = arrayPalabras[numPalabras - 1];
+
+    // Palabras en orden inverso. 
+    // Usamos slice() para copiar el array original [8-10] antes de usar reverse() 
+    let palabrasInverso = arrayPalabras.slice().reverse();
+
+    // Palabras ordenadas A-Z. 
+    // Usamos slice() para obtener una copia antes de usar sort() 
+    let palabrasAZ = arrayPalabras.slice().sort();
+
+    // Palabras ordenadas Z-A. (copiamos el array A-Z y lo invertimos)
+    let palabrasZA = palabrasAZ.slice().reverse();
+
+    // Escribir el contenido completo en la nueva ventana en un solo document.write().
+
+
+    const contenidoHTML = `
+<!DOCTYPE html>
+<html lang='es'>
+<head>
+    <meta charset="UTF-8">
+    <title>Resultados del Análisis de la Cadena</title>
+</head>
+<body>
+    <h1>Análisis de la Cadena</h1>
+    <p>Cadena original: <b>${textoInput}</b></p><hr>
+
+    <h2>1. Número de palabras</h2>
+    <p>Total de palabras: <b>${numPalabras}</b>.</p>
+
+    <h2>2. Primera y Última Palabra</h2>
+    <p>Primera palabra: <b>${primeraPalabra}</b></p>
+    <p>Última palabra: <b>${ultimaPalabra}</b></p>
+
+    <h2>3. Palabras en Orden Inverso</h2>
+    <p>${palabrasInverso.join(", ")}</p>
+
+    <h2>4. Palabras Ordenadas (A-Z)</h2>
+    <p>${palabrasAZ.join(", ")}</p>
+
+    <h2>5. Palabras Ordenadas (Z-A)</h2>
+    <p>${palabrasZA.join(", ")}</p>
+</body>
+</html>
+`;
+
+    nuevaVentana.document.write(contenidoHTML);
+    nuevaVentana.document.close();
 }
