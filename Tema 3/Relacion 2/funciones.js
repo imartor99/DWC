@@ -141,3 +141,29 @@ function ordenarYEliminarDuplicados(array1) {
     // 2. Eliminar duplicados.
     return eliminarDuplicados(arregloOrdenado);
 }
+
+// EJERCICIO 8
+function procesarNombresOrdenados() {
+    // Solicita al usuario la cadena de nombres.
+    let nombresInput = prompt("Introduce los nombres separados por comas (Ej: Ana,Beto,Carlos):"); 
+
+    // Comprueba si el usuario introdujo algo o canceló.
+    if (nombresInput) {
+        // 1. Convertir la cadena de texto a un array usando split().
+        // El método split() convierte la cadena en un array basado en el separador proporcionado.
+        let arrayNombres = nombresInput.split(','); 
+        
+        // Limpieza de espacios (trim()) para cada nombre usando map().
+        let nombresLimpios = arrayNombres.map(nombre => nombre.trim()); 
+        
+        // 2. Ordenar el array alfabéticamente usando sort().
+        nombresLimpios.sort(); 
+
+        // 3. Mostrar el resultado en el documento HTML.
+        // join() convierte el array de vuelta a una cadena con el separador especificado (<br>).
+        document.write("<h1>Lista de Nombres Ordenada</h1>");
+        document.write("<p>" + nombresLimpios.join("<br>") + "</p>"); 
+    } else {
+        document.write("No se introdujo ningún dato.");
+    }
+}
