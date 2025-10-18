@@ -102,3 +102,35 @@ function obtenerEstudianteAlAzar(arrayClase) {
 
     return nombre;
 }
+
+// EJERCICIO 5
+
+function paresImpares() {
+    // Crear el array de 100 números aleatorios (1 a 1000)
+    let arrayNumeros = [];
+    for (let i = 0; i < 100; i++) {
+        // Math.floor(Math.random() * 1000) genera un número de 0 a 999.
+        // Se suma 1 para que sea de 1 a 1000.
+        arrayNumeros.push(Math.floor(Math.random() * 1000) + 1);
+    }
+
+    // 2. Mostrar el contenido inicial
+    document.write("<h2>1. Array Original (100 números):</h2>");
+    document.write(`<p>${arrayNumeros.join(', ')}</p>`);
+
+    // Organizar el array: pares y después impares
+
+    // Filtrar los pares (número % 2 === 0)
+    const pares = arrayNumeros.filter(numero => numero % 2 === 0);
+
+    // Filtrar los impares (número % 2 !== 0)
+    const impares = arrayNumeros.filter(numero => numero % 2 !== 0);
+
+    // Concatenar el nuevo array (pares + impares)
+    const arrayOrganizado = pares.concat(impares);
+
+    document.write("<h2>2. Array Organizado (Pares primero, luego Impares):</h2>");
+    document.write(`<p>${arrayOrganizado.join(', ')}</p>`);
+
+    document.write(`<p>Total de números: ${arrayOrganizado.length}</p>`);
+}
