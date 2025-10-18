@@ -3,14 +3,13 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Ubicación con Leaflet (CSS Mínimo)</title>
+    <title>Ubicación con Leaflet (Simplificado JSDoc)</title>
 
-    <!-- 1. CSS de Leaflet: Es necesario para que los tiles y el marcador se muestren correctamente -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <!-- Librería JavaScript de Leaflet -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
     <style>
+        /* CSS mínimo para que el mapa se muestre */
         #map {
             height: 400px;
             width: 100%;
@@ -23,93 +22,86 @@
     <h1>Mi Ubicación Actual</h1>
     <p id="status">Verificando geolocalización...</p>
 
-    <!-- Contenedor del mapa -->
     <div id="map"></div>
 
     <script>
+        // Variables globales necesarias
         let map;
         const statusElement = document.getElementById('status');
 
-        // Función de éxito (llama a Leaflet)
+        /**
+         * Inicializa y centra el mapa Leaflet en las coordenadas dadas.
+         * Añade la capa base de OpenStreetMap y un marcador.
+         * * @param {number} lat Latitud.
+         * @param {number} lon Longitud.
+         * @param {number} [zoom=15] Nivel de zoom inicial.
+         */
+        function initializeLeafletMap(lat, lon, zoom = 15) {
+            // 1. Inicializa el mapa si aún no existe
+            if (!map) {
+                map = L.map('map').setView([lat, lon], zoom);
+            } else {
+                // Si ya existe, solo reajusta la vista
+                map.setView([lat, lon], zoom);
+            }
+
+            // 2. Añade la capa base de OpenStreetMap (Tiles)
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            // 3. Añade un marcador en la ubicación
+            L.marker([lat, lon])
+                .addTo(map)
+                .bindPopup("Estás aquí")
+                .openPopup();
+        }
+
+        /**
+         * Función de éxito de geolocalización.
+         * Procesa las coordenadas y llama a initializeLeafletMap.
+         * * @param {GeolocationPosition} position Objeto con las coordenadas.
+         */
         function successCallback(position) {
-            // Se accede a la latitud y longitud, las coordenadas son en el sistema WGS84
             const lat = position.coords.latitude;
             const lon = position.coords.longitude;
 
             statusElement.textContent = `Ubicación obtenida: Latitud ${lat.toFixed(6)}, Longitud ${lon.toFixed(6)}`;
             statusElement.style.color = 'green';
 
+            // Llama a la inicialización del mapa con la posición obtenida
             initializeLeafletMap(lat, lon);
         }
 
-        // Función de error
+        /**
+         * Función de error de geolocalización.
+         * Muestra un mensaje de error y centra el mapa en el globo por defecto (0, 0).
+         * * @param {GeolocationPositionError} error Objeto con la información del error.
+         */
         function errorCallback(error) {
-            let mensaje;
+            statusElement.textContent = "❌ Error al obtener la ubicación. Asegúrate de dar permiso.";
             statusElement.style.color = 'red';
 
-            switch (error.code) {
-                case GeolocationPositionError.PERMISSION_DENIED:
-                    // El usuario denegó el permiso o el contexto no es seguro (no HTTPS) 
-                    mensaje = "Error: Permiso denegado.";
-                    break;
-                case GeolocationPositionError.POSITION_UNAVAILABLE: 
-                    mensaje = "Error: Posición no disponible.";
-                    break;
-                case GeolocationPositionError.TIMEOUT: 
-                    // El tiempo de espera máximo ha expirado 
-                    mensaje = "Error: Solicitud expirada (Timeout).";
-                    break;
-            }
-            statusElement.textContent = mensaje;
-
-            // Centrar en un punto por defecto si falla la geolocalización.
+            // Centra en el centro del mapa mundial si falla la geolocalización
             initializeLeafletMap(0, 0, 2);
         }
 
-        // Función de inicialización del Mapa Leaflet
-        function initializeLeafletMap(lat, lon, zoom = 15) {
-            if (!map) {
-                map = L.map('map').setView([lat, lon], zoom);
-            } else {
-                map.setView([lat, lon], zoom);
-            }
-
-            // Añade la capa de tiles de OpenStreetMap
-            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' // La atribución es requerida [8]
-            }).addTo(map);
-
-            if (zoom > 5) {
-                // Añade un marcador
-                L.marker([lat, lon])
-                    .addTo(map)
-                    .bindPopup("Tu ubicación")
-                    .openPopup();
-            }
-        }
-
-        // Punto de Entrada
+        // Punto de Entrada: Ejecutar al cargar la página
         window.onload = function () {
-            // La geolocalización proporciona acceso a la información de ubicación geográfica
+            // 1. Verifica si el navegador soporta la API de Geolocalización
             if (navigator.geolocation) {
                 statusElement.textContent = "Geolocalización disponible. Solicitando posición...";
 
-                // PositionOptions define los parámetros, como enableHighAccuracy
-                const options = {
-                    enableHighAccuracy: true, // Pide la mayor precisión, aunque puede ser ignorado por el agente de usuario
-                    timeout: 10000,
-                    maximumAge: 0 // No se acepta posición en caché
-                };
-
-                // getCurrentPosition() solicita la ubicación "one-shot"
+                // 2. Llama a getCurrentPosition con las funciones de éxito y error
                 navigator.geolocation.getCurrentPosition(
                     successCallback,
-                    errorCallback,
-                    options
+                    errorCallback
                 );
             } else {
-                statusElement.textContent = "Su navegador no soporta la API de Geolocalización.";
+                statusElement.textContent = "🚫 Su navegador no soporta la API de Geolocalización.";
                 statusElement.style.color = 'red';
+                // Muestra el mapa global de todos modos
+                initializeLeafletMap(0, 0, 2);
             }
         };
 
