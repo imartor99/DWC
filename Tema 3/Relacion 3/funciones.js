@@ -59,3 +59,31 @@ function obtenerNota(arrayClase, estudianteNum, trimestre = null) {
         return notas[indiceNota];
     }
 }
+
+// EJERCICIO 3
+
+function calcularEdadMedia(arrayClase) {
+    // Extraer las edades:
+    // arrayClase.map() itera sobre cada string del alumno.
+    const edades = arrayClase.map(alumno => {
+        // split(',') divide la cadena en un array de campos.
+        const campos = alumno.split(',');
+
+        // La edad está en el índice 1. Debes acceder al elemento del array (campos[1])
+        // antes de usar .trim().
+        const edadStr = campos[1].trim();
+
+        return parseInt(edadStr);
+    });
+
+    // Sumar todas las edades:
+    // reduce() aplica una función callback (acumulador, valor actual) para obtener un único valor.
+    // El '0' es el valor inicial del acumulador (total).
+    const sumaEdades = edades.reduce((total, edad) => total + edad, 0);
+
+    // Calcular la media:
+    const media = sumaEdades / arrayClase.length;
+
+    // Devolvemos la media redondeada a un decimal.
+    return parseFloat(media.toFixed(1));
+}

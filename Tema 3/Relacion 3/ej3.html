@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="funciones.js"></script>
+    <title>Ejercicio 3</title>
+</head>
+
+<body>
+
+    <h1>Cálculo de la Edad Media de la Clase</h1>
+
+    <script>
+
+        const clase = [
+            "Angel Garcia, 20, 6, 7, 10",
+            "Maria Lopez, 21, 8, 5, 9",
+            "Juan Perez, 20, 3, 4, 5",
+            "Laura Diaz, 22, 9, 9, 9",
+            "Pedro Sanchez, 19, 7, 8, 6"
+        ];
+
+        const edadMediaClase = calcularEdadMedia(clase);
+
+        document.write("<h2>Resultado:</h2>");
+        document.write(`<p>La edad media de los alumnos de la clase es: <strong>${edadMediaClase} años</strong></p>`);
+    </script>
+
+</body>
+
+</html>
