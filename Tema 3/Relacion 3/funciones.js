@@ -462,7 +462,7 @@ function asignarAsiento(clase, nombrePasajero) {
 }
 
 /* Comprueba si hay al menos un asiento libre en el rango de la clase dada. Requiere acceso a las constantes de rango y al array 'asientos' desde el ámbito global. */
- 
+
 function comprobarDisponibilidad(clase) {
     const RANGO_FIRST_INICIO = FIRST_START;
     const RANGO_FIRST_FIN = FIRST_END;
@@ -524,4 +524,94 @@ function mostrarEstadoAsientos() {
     salida += "</p>";
 
     estadoDiv.innerHTML = salida;
+}
+
+// EJERCICIO 11
+
+/* Procesa el array de ventas iniciales, acumula los totales en la matriz 'ventas'  y luego llama a la función para mostrar el resultado en formato de tabla.
+Asume que 'ventas', 'datosVentas', 'NUM_VENDEDORES' y 'NUM_PRODUCTOS' son globales. */
+
+function procesarVentas() {
+    // 1. Procesamiento de los datos del mes pasado (datosVentas)
+
+    // Cada elemento de datosVentas es [vendedor, producto, valor]
+    datosVentas.forEach(registro => {
+        const vendedor = registro[0]; // 1 a 4
+        const producto = registro[1];  // 1 a 5
+        const valor = registro[2];
+
+        // Los arrays tienen índices base 0. Restamos 1 a los números.
+        const indiceVendedor = vendedor - 1; // 0 a 3
+        const indiceProducto = producto - 1; // 0 a 4
+
+        // Acumulación: ventas[Producto][Vendedor]
+        ventas[indiceProducto][indiceVendedor] += valor;
+    });
+
+    // 2. Mostrar los resultados
+    mostrarResultadosMatriz();
+}
+
+/* Calcula los totales acumulados por producto y por vendedor, y genera la tabla XHTML. Asume que 'ventas', 'NUM_VENDEDORES' y 'NUM_PRODUCTOS' son globales. */
+ 
+function mostrarResultadosMatriz() {
+    const resultadoDiv = document.getElementById('resultado');
+    let tabla = "<h2>Resumen Total de Ventas del Mes Pasado</h2>";
+
+    // Arrays para acumular los totales
+    let totalVentasPorVendedor = new Array(NUM_VENDEDORES).fill(0);
+    let totalVentasPorProducto = new Array(NUM_PRODUCTOS).fill(0);
+    let totalGeneral = 0;
+
+    // Parte 1: Calcular totales por fila y columna 
+    for (let i = 0; i < NUM_PRODUCTOS; i++) { // Filas: Productos
+        for (let j = 0; j < NUM_VENDEDORES; j++) { // Columnas: Vendedores
+            const valor = ventas[i][j];
+
+            totalVentasPorVendedor[j] += valor;
+            totalVentasPorProducto[i] += valor;
+            totalGeneral += valor;
+        }
+    }
+
+    // Parte 2: Generar la tabla XHTML 
+
+    tabla += '<table border="1">';
+
+    // Fila de encabezado (Vendedores)
+    tabla += '<thead><tr><th>Producto \\ Vendedor</th>';
+    for (let j = 0; j < NUM_VENDEDORES; j++) {
+        tabla += `<th>Vendedor ${j + 1}</th>`;
+    }
+    tabla += '<th>TOTAL Productos</th></tr></thead>'; // Última columna
+
+    // Cuerpo de la tabla (Productos)
+    tabla += '<tbody>';
+    for (let i = 0; i < NUM_PRODUCTOS; i++) {
+        const productoNum = i + 1;
+        tabla += `<tr><th>Producto ${productoNum}</th>`; // Encabezado de fila
+
+        // Ventas por vendedor para este producto
+        for (let j = 0; j < NUM_VENDEDORES; j++) {
+            // Se utiliza .toFixed(2) para mostrar dos decimales
+            tabla += `<td>${ventas[i][j].toFixed(2)}</td>`;
+        }
+
+        // Última columna: Total acumulado para este Producto (Fila)
+        tabla += `<th>${totalVentasPorProducto[i].toFixed(2)}</th>`;
+        tabla += '</tr>';
+    }
+
+    // Última fila (Totales por Vendedor)
+    tabla += '<tr><th>TOTAL Vendedores</th>';
+    for (let j = 0; j < NUM_VENDEDORES; j++) {
+        // Celda con el total de ventas del Vendedor (Columna)
+        tabla += `<th>${totalVentasPorVendedor[j].toFixed(2)}</th>`;
+    }
+
+    // Esquina inferior derecha: Total General
+    tabla += `<th>${totalGeneral.toFixed(2)}</th>`;
+    tabla += '</tr></tbody></table>';
+
+    resultadoDiv.innerHTML = tabla;
 }
