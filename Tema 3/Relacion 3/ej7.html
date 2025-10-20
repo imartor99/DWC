@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="funciones.js"></script>
+    <title>Ejercicio 7</title>
+</head>
+
+<body>
+
+    <h1>Operaciones Básicas en Array de 10 Elementos</h1>
+
+    <!-- Botones que llaman a las funciones definidas en funciones.js -->
+    <button onclick="establecerCeros()">Establecer todos a Cero</button>
+    <button onclick="añadirUno()">Añadir 1 a cada Elemento</button>
+    <button onclick="mostrarValores()">Mostrar Valores</button>
+
+    <hr>
+
+    <div id="resultado"></div>
+
+    <script>
+
+        // DECLARACIÓN DEL ARRAY GLOBAL
+        const miArray = new Array(10);
+
+        // INICIALIZACIÓN DEL ARRAY CON VALORES ALEATORIOS (1 a 100)
+        for (let i = 0; i < miArray.length; i++) {
+    
+            miArray[i] = Math.floor(Math.random() * 100) + 1;
+        }
+
+
+    </script>
+
+</body>
+
+</html>

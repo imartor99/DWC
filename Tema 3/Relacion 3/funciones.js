@@ -153,7 +153,7 @@ function calcularSalario(montoVentas) {
 
 /* Lee los datos del formulario, realiza el cálculo, añade el objeto al array global (listadoVendedores) y actualiza la visualización. */
 function agregarVendedor() {
-    
+
     // La lógica de entrada y salida (DOM) permanece aquí.
     let nombreVendedor = document.getElementById("inputNombre").value;
     let montoVentas = document.getElementById("inputVentas").value;
@@ -189,7 +189,7 @@ function agregarVendedor() {
 
 /* Muestra el listado completo de vendedores en el contenedor #resultado. */
 function mostrarDatosVendedores(listadoVendedores) {
-    
+
     let contenedorResultados = document.getElementById("resultado");
 
     if (listadoVendedores.length === 0) {
@@ -217,4 +217,36 @@ function mostrarDatosVendedores(listadoVendedores) {
 
     // Inserto resultados en el DIV contenedor
     contenedorResultados.innerHTML = salida;
+}
+
+//EJERCICIO 7
+
+// Uso el array global 'miArray' definido en el HTML.
+
+/** Establece todos los 10 elementos del array global a cero. */
+function establecerCeros() {
+    
+    for (let i = 0; i < miArray.length; i++) {
+        miArray[i] = 0;
+    }
+    mostrarValores();
+}
+
+/** Añade 1 a cada uno de los 10 elementos del array global. */
+function añadirUno() {
+
+    for (let i = 0; i < miArray.length; i++) {
+        miArray[i] += 1;
+    }
+    mostrarValores();
+}
+
+/** Muestra los valores del array separados por espacios. */
+function mostrarValores() {
+    const resultadoDiv = document.getElementById('resultado');
+
+    resultadoDiv.innerHTML = `
+        <h3>Valores Actuales del Array:</h3>
+        <p>[ ${miArray.join(' ')} ]</p>
+    `;
 }
