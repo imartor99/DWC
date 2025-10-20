@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="funciones.js"></script>
+    <title>Ejercicio 9</title>
+</head>
+
+<body>
+
+    <h1>Simulador de Lanzamiento de Dos Dados - Frecuencias</h1>
+
+    <div id="resultado">
+        <h3>Preparando simulación...</h3>
+    </div>
+
+    <script>
+        // DECLARACIÓN DE CONSTANTES Y ARRAYS GLOBALES
+
+        // Constante para el número de simulaciones.
+        const NUMERO_LANZAMIENTOS = 36000;
+
+        // 1. Array Unidimensional (Frecuencia por Suma: 2 a 12)
+        const frecuencias = new Array(11).fill(0);
+
+        // 2. Array Bidimensional (Frecuencia por Combinación: Dado 1 x Dado 2)
+        const combinaciones = new Array(6);
+
+        // Inicialización del array bidimensional.
+        for (let i = 0; i < 6; i++) {
+            combinaciones[i] = new Array(6).fill(0);
+        }
+
+        // Llamo a la función renombrada para ejecutar la simulación y mostrar los resultados.
+        simularDados();
+    </script>
+
+</body>
+
+</html>

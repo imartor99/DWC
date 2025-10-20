@@ -313,3 +313,96 @@ function mostrarResultados() {
 
     resultadoDiv.innerHTML = salida;
 }
+
+// EJERCICIO 9
+
+/* Simula el lanzamiento de dos dados NUMERO_LANZAMIENTOS veces. */
+function simularDados() {
+    // Los arrays 'frecuencias' y 'combinaciones', y la constante 'NUMERO_LANZAMIENTOS' se leen del HTML.
+
+    for (let i = 0; i < NUMERO_LANZAMIENTOS; i++) {
+        const dado1 = Math.floor(Math.random() * 6) + 1;
+        const dado2 = Math.floor(Math.random() * 6) + 1;
+
+        const suma = dado1 + dado2;
+
+        // Conteo para la tabla de sumas (Array Unidimensional)
+        const indiceSuma = suma - 2;
+        frecuencias[indiceSuma]++;
+
+        // Conteo para la tabla de combinaciones (Array Bidimensional)
+        const indiceFila = dado1 - 1;
+        const indiceColumna = dado2 - 1;
+        combinaciones[indiceFila][indiceColumna]++;
+    }
+
+    mostrarResultadosDados();
+}
+
+/* Muestra las frecuencias de las sumas y las combinaciones en tablas separadas. */
+function mostrarResultadosDados() {
+    const resultadoDiv = document.getElementById('resultado');
+
+    let salida = `
+        <h2>Resultados de ${NUMERO_LANZAMIENTOS} Lanzamientos:</h2>
+    `;
+
+    // --- 1. Generación de la Tabla de FRECUENCIAS (Suma) ---
+    salida += `
+        <h3>1. Frecuencia por Suma</h3>
+        <table border="1">
+            <thead>
+                <tr><th>Suma de los Dados</th><th>Veces que Aparece</th><th>Probabilidad (%)</th></tr>
+            </thead>
+            <tbody>
+    `;
+
+    for (let suma = 2; suma <= 12; suma++) {
+        const indiceSuma = suma - 2;
+        const frecuencia = frecuencias[indiceSuma];
+
+        // Cálculo de la probabilidad
+        const probabilidad = ((frecuencia / NUMERO_LANZAMIENTOS) * 100).toFixed(4);
+
+        salida += `
+            <tr>
+                <td>${suma}</td>
+                <td align="right">${frecuencia}</td>
+                <td align="right">${probabilidad}%</td>
+            </tr>
+        `;
+    }
+
+    salida += '</tbody></table><br>';
+
+    // --- 2. Generación de la Tabla de COMBINACIONES (Array Bidimensional) ---
+    salida += `
+        <h3>2. Frecuencia por Combinación (Dado 1 vs Dado 2)</h3>
+        <p>Los valores en la tabla representan el número de veces que se obtuvo esa combinación específica (Fila, Columna).</p>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Dado 1 \\ Dado 2</th>
+                    <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th>
+                </tr>
+            </thead>
+            <tbody>
+    `;
+
+    // Recorremos las filas (Dado 1) del 0 al 5
+    for (let i = 0; i < 6; i++) {
+        const dado1Valor = i + 1; // El valor real del dado (1 a 6)
+        salida += `<tr><th>${dado1Valor}</th>`;
+
+        // Recorremos las columnas (Dado 2) del 0 al 5
+        for (let j = 0; j < 6; j++) {
+            const frecuenciaCombinacion = combinaciones[i][j];
+            salida += `<td align="right">${frecuenciaCombinacion}</td>`;
+        }
+        salida += '</tr>';
+    }
+
+    salida += '</tbody></table>';
+
+    resultadoDiv.innerHTML = salida;
+}
