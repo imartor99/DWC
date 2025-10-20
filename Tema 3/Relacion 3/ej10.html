@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="funciones.js"></script>
+    <title>Ejercicio 10</title>
+</head>
+<body>
+
+    <h1>Sistema de Reservas (10 Plazas)</h1>
+
+    <div>
+        <h2>Reserva de Asiento</h2>
+        
+        <label for="nombre">Nombre del Pasajero:</label>
+        <input type="text" id="nombre" placeholder="Ej: Juan Pérez" required><br><br>
+        
+        <label for="clase">Seleccionar Clase:</label>
+        <select id="clase" required>
+            <option value="First">First (Asientos 1-5)</option>
+            <option value="Turista">Turista (Asientos 6-10)</option>
+        </select><br><br>
+
+        <button onclick="intentarReservar()">Confirmar Reserva</button>
+    </div>
+
+    <div id="mensaje">
+        </div>
+
+    <div id="estado">
+        </div>
+
+    <script>
+        
+        // VARIABLES Y CONSTANTES GLOBALES (ESTADO)
+       
+        // Array Unidimensional para los asientos: 10 elementos, inicializados a 0 (Libre).
+        const asientos = new Array(10).fill(0); 
+
+        // Constantes para definir los rangos de las clases
+        const FIRST_START = 1;
+        const FIRST_END = 5;
+        const TOURIST_START = 6;
+        const TOURIST_END = 10;
+      
+        // FUNCIONES AUXILIARES DE ENTRADA (Manejadores de Eventos)
+
+        /** Función auxiliar que recoge los datos y llama a la lógica en funciones.js. */
+        function intentarReservar() {
+            const nombre = document.getElementById('nombre').value.trim();
+            const clase = document.getElementById('clase').value;
+            
+            if (nombre === "") {
+                document.getElementById('mensaje').innerHTML = "<p>Debe introducir el nombre del pasajero.</p>";
+                return;
+            }
+            
+            // Llamo a la función de lógica en el archivo JS externo
+            asignarAsiento(clase, nombre);
+        }
+
+        
+    </script>
+
+
+    
+</body>
+</html>

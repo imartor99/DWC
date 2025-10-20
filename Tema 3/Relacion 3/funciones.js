@@ -406,3 +406,122 @@ function mostrarResultadosDados() {
 
     resultadoDiv.innerHTML = salida;
 }
+
+// EJERCICIO 10
+
+/* Intenta asignar un asiento en la clase solicitada (First o Turista). Requiere acceso al array 'asientos' y a las constantes de rango globalmente. */
+
+function asignarAsiento(clase, nombrePasajero) {
+
+    let rangoInicio, rangoFin;
+    let asientoAsignado = -1;
+    let mensajeError = "";
+
+    // 1. Determinar el rango de búsqueda según la clase
+    if (clase === 'First') {
+        rangoInicio = FIRST_START;
+        rangoFin = FIRST_END;
+    } else if (clase === 'Turista') {
+        rangoInicio = TOURIST_START;
+        rangoFin = TOURIST_END;
+    } else {
+        mensajeError = "Tipo de clase no válida.";
+        document.getElementById('mensaje').innerHTML = `<p>${mensajeError}</p>`;
+        return;
+    }
+
+    // 2. Buscar el primer asiento libre en el rango (índices 0 a 9)
+    for (let i = rangoInicio - 1; i < rangoFin; i++) {
+        if (asientos[i] === 0) { // 0 significa libre
+            asientos[i] = 1; // 1 significa ocupado
+            asientoAsignado = i + 1; // Guardamos el número de asiento (1 a 10)
+            break;
+        }
+    }
+
+    // 3. Resultado de la asignación
+    if (asientoAsignado !== -1) {
+        // Asignación exitosa
+        document.getElementById('mensaje').innerHTML = `<p>Asiento ${asientoAsignado} asignado en clase ${clase}!</p>`;
+        mostrarEstadoAsientos(); // Muestra el estado *después* de la primera reserva
+        imprimirTarjetaEmbarque(nombrePasajero, asientoAsignado, clase);
+    } else {
+        // Clase llena
+        mensajeError = `La clase ${clase} está completa. `;
+
+        // Comprobar disponibilidad en la alternativa
+        let alternativaClase = (clase === 'First') ? 'Turista' : 'First';
+        if (comprobarDisponibilidad(alternativaClase)) {
+            mensajeError += `Pruebe con ${alternativaClase}.`;
+        } else {
+            mensajeError += `Lo sentimos, el vuelo está completo.`;
+        }
+
+        document.getElementById('mensaje').innerHTML = `<p>${mensajeError}</p>`;
+    }
+}
+
+/* Comprueba si hay al menos un asiento libre en el rango de la clase dada. Requiere acceso a las constantes de rango y al array 'asientos' desde el ámbito global. */
+ 
+function comprobarDisponibilidad(clase) {
+    const RANGO_FIRST_INICIO = FIRST_START;
+    const RANGO_FIRST_FIN = FIRST_END;
+    const RANGO_TOURIST_INICIO = TOURIST_START;
+    const RANGO_TOURIST_FIN = TOURIST_END;
+
+    let inicio = (clase === 'First') ? RANGO_FIRST_INICIO : RANGO_TOURIST_INICIO;
+    let fin = (clase === 'First') ? RANGO_FIRST_FIN : RANGO_TOURIST_FIN;
+
+    // El array 'asientos' es global (del HTML).
+    for (let i = inicio - 1; i < fin; i++) {
+        if (asientos[i] === 0) {
+            return true;
+        }
+    }
+    return false;
+}
+
+/* Genera la tarjeta de embarque en una nueva ventana con HTML puro. */
+function imprimirTarjetaEmbarque(nombrePasajero, numAsiento, clase) {
+    const ventana = window.open('', 'TarjetaDeEmbarque', 'width=400,height=300');
+
+    // Sin CSS
+    ventana.document.write(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Tarjeta de Embarque</title>
+        </head>
+        <body>
+            <h2>Tarjeta de Embarque</h2>
+            <p>Pasajero: <strong>${nombrePasajero}</strong></p>
+            <p>Clase: <strong>${clase}</strong></p>
+            <p>Asiento N°: <strong>${numAsiento}</strong></p>
+            <p>¡Buen viaje!</p>
+        </body>
+        </html>
+    `);
+    ventana.document.close();
+}
+
+/* Actualiza la visualización del estado actual de los 10 asientos. Muestra el estado como 0 (Libre) o 1 (Ocupado). */
+function mostrarEstadoAsientos() {
+    const estadoDiv = document.getElementById('estado');
+    let salida = "<h3>Estado de Asientos (0=Libre, 1=Ocupado)</h3>";
+    salida += "<p>Clase First (1-5): ";
+
+    // Asientos 1-5 (índices 0-4)
+    for (let i = 0; i < 5; i++) {
+        salida += `[${i + 1}:${asientos[i]}] `;
+    }
+
+    salida += "</p><p>Clase Turista (6-10): ";
+
+    // Asientos 6-10 (índices 5-9)
+    for (let i = 5; i < 10; i++) {
+        salida += `[${i + 1}:${asientos[i]}] `;
+    }
+    salida += "</p>";
+
+    estadoDiv.innerHTML = salida;
+}
