@@ -225,7 +225,7 @@ function mostrarDatosVendedores(listadoVendedores) {
 
 /** Establece todos los 10 elementos del array global a cero. */
 function establecerCeros() {
-    
+
     for (let i = 0; i < miArray.length; i++) {
         miArray[i] = 0;
     }
@@ -249,4 +249,67 @@ function mostrarValores() {
         <h3>Valores Actuales del Array:</h3>
         <p>[ ${miArray.join(' ')} ]</p>
     `;
+}
+
+// EJERCICIO 8
+
+/* Simula el lanzamiento de dos dados NUMERO_LANZAMIENTOS veces y cuenta la frecuencia de cada suma. */
+function simularLanzamientos() {
+    // El array 'frecuencias' y la constante 'NUMERO_LANZAMIENTOS' se leen del HTML.
+
+    // El bucle simula los 36,000 lanzamientos.
+    for (let i = 0; i < NUMERO_LANZAMIENTOS; i++) {
+        // Lanzamiento del Dado 1 (número aleatorio entre 1 y 6)
+        const dado1 = Math.floor(Math.random() * 6) + 1;
+
+        // Lanzamiento del Dado 2 (número aleatorio entre 1 y 6)
+        const dado2 = Math.floor(Math.random() * 6) + 1;
+
+        const suma = dado1 + dado2;
+
+        // La suma de los dados varía de 2 a 12. 
+        // Para usar un array de índice 0 a 10 (11 elementos), restamos 2 a la suma.
+        // Índice 0 (Suma 2), Índice 10 (Suma 12)
+        const indice = suma - 2;
+
+        // Incrementamos el contador en la posición correspondiente del array.
+        frecuencias[indice]++;
+    }
+
+    mostrarResultados();
+}
+
+/** Muestra las frecuencias de las sumas en una tabla. */
+function mostrarResultados() {
+    const resultadoDiv = document.getElementById('resultado');
+
+    let salida = `
+        <h3>Resultados de ${NUMERO_LANZAMIENTOS} Lanzamientos:</h3>
+        <table border="1">
+            <thead>
+                <tr><th>Suma de los Dados</th><th>Veces que Aparece</th><th>Probabilidad (%)</th></tr>
+            </thead>
+            <tbody>
+    `;
+
+    // Recorremos el array 'frecuencias'
+    for (let suma = 2; suma <= 12; suma++) {
+        const indice = suma - 2;
+        const frecuencia = frecuencias[indice];
+
+        // Cálculo de la probabilidad
+        const probabilidad = ((frecuencia / NUMERO_LANZAMIENTOS) * 100).toFixed(4);
+
+        salida += `
+            <tr>
+                <td>${suma}</td>
+                <td align="right">${frecuencia}</td>
+                <td align="right">${probabilidad}%</td>
+            </tr>
+        `;
+    }
+
+    salida += '</tbody></table>';
+
+    resultadoDiv.innerHTML = salida;
 }

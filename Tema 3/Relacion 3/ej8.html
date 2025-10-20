@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="funciones.js"></script>
+    <title>Ejercicio 8</title>
+</head>
+
+<body>
+
+    <h1>Simulador de Lanzamiento de Dos Dados</h1>
+
+    <div id="resultado">
+        <h3>Simulando lanzamientos...</h3>
+    </div>
+
+    <script>
+        // DECLARACIÓN DE CONSTANTES Y ARRAYS GLOBALES
+
+        // Constante para el número de simulaciones.
+        const NUMERO_LANZAMIENTOS = 36000;
+
+        // Array unidimensional para almacenar las frecuencias.
+        // Se necesitan 11 elementos para cubrir las sumas de 2 a 12.
+        // El índice 0 guardará la suma 2. El índice 10 guardará la suma 12.
+        const frecuencias = new Array(11).fill(0);
+
+        // Al cargar la página, llamo a la función para ejecutar la simulación y mostrar los resultados.
+        simularLanzamientos();
+    </script>
+
+</body>
+
+</html>
