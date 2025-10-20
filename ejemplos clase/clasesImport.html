@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Albaranes</title>
+</head>
+
+<body>
+    <script>
+        // Clase Cliente
+        class Cliente {
+            constructor(NIF, nombre, direccion, telefono, email) {
+                this.NIF = NIF;
+                this.nombre = nombre;
+                this.direccion = direccion;
+                this.telefono = telefono;
+                this.email = email;
+            }
+
+            mostrarCliente() {
+                console.log(
+                    "NIF: " + this.NIF +
+                    " Nombre: " + this.nombre +
+                    " Dirección: " + this.direccion +
+                    " Teléfono: " + this.telefono +
+                    " Email: " + this.email
+                );
+            }
+        }
+
+        // Clase Articulo
+        export class Articulo {
+            constructor(codigo, nombre, precio) {
+                this.codigo = codigo;
+                this.nombre = nombre;
+                this.precio = precio;
+            }
+
+            get pvp() {
+                return this.precio * 1.21;
+            }
+
+            mostrarArticulo() {
+                console.log(
+                    "Código: " + this.codigo +
+                    " Nombre: " + this.nombre +
+                    " Precio: " + this.precio +
+                    " PVP: " + this.pvp
+                );
+            }
+        }
+
+        // Clase Albaran
+        export class Albaran {
+            constructor(cliente, nAlbaran, fecha, lineas = []) {
+                this.cliente = cliente;
+                this.nAlbaran = nAlbaran;
+                this.fecha = fecha;
+                this.lineas = lineas;
+            }
+
+            addArticulo(articulo) {
+                this.lineas.push(articulo);
+            }
+
+            getTotal() {
+                return this.lineas.reduce(function (total, art) {
+                    return total + art.pvp;
+                }, 0);
+            }
+
+            mostrarAlbaran() {
+                console.log("ALBARÁN Nº " + this.nAlbaran);
+                this.cliente.mostrarCliente();
+                console.log(
+                    "Fecha: " + this.fecha +
+                    "Número de artículos: " + this.lineas.length + "\n"
+                );
+                console.log("Artículos: ");
+
+                for (let i = 0; i < this.lineas.length; i++) {
+                    this.lineas[i].mostrarArticulo();
+                }
+
+                console.log("TOTAL: " + this.getTotal() + "€");
+            }
+        }
+
+        // Inicialización
+        function inicializaAlbaran() {
+            const cliente1 = new Cliente(1234, "Juan", "Avenida de la estación", 666777888, "j@gmail.com");
+            const articulo1 = new Articulo(333, "Lápiz", "1.20");
+            const articulo2 = new Articulo(444, "Goma", "1.00");
+
+            const fecha = new Date().toString();
+            const albaran = new Albaran(cliente1, 1, fecha, []);
+
+            albaran.addArticulo(articulo1);
+            albaran.addArticulo(articulo2);
+
+            return albaran;
+        }
+
+        const miAlbaran = inicializaAlbaran();
+        miAlbaran.mostrarAlbaran();
+    </script>
+</body>
+
+</html>
