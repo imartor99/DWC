@@ -1,6 +1,9 @@
 import { Albaran } from './js/Albaran.js';
 import { Articulo } from './js/Articulo.js';
-import { Cliente } from './js/cliente.js';
+import { Cliente } from './js/Cliente.js';
+import { Albaranes } from './js/Albaranes.js';
+
+
 
 
 (function() {
@@ -20,5 +23,18 @@ import { Cliente } from './js/cliente.js';
     // Crear un albarán
     let albaran1 = new Albaran(cliente1, "ALB1001", "2024-06-15");
     console.log("Albarán creado:", albaran1);
+
+    // Añadir el artículo al albarán 
+    albaran1.addArticulo(articulo1);
+    console.log("Albarán después de añadir artículo:", albaran1);
+
+    // Almacenar varios albaranes usando la clase Albaranes
+    let gestionAlbaranes = new Albaranes();
+    let listaAlbaranes = gestionAlbaranes.inicializar();
+    console.log("Lista de albaranes inicializados:", listaAlbaranes);
+    //Introduzco albaran1 en Albaranes
+    listaAlbaranes.push(albaran1);
+    console.log("Lista de albaranes después de añadir albaran1:", listaAlbaranes);
+
 
 })();
