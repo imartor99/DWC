@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="funciones.js"></script>
+    <title>Ejercicio 6</title>
+</head>
+
+<body>
+
+    <h1>Gestión de Vendedores</h1>
+
+
+    <label for="inputNombre">Nombre del vendedor:</label>
+    <input type="text" id="inputNombre" placeholder="Introduce el nombre" required /><br /><br />
+
+    <label for="inputVentas">Ventas semanales ($):</label>
+    <input type="number" id="inputVentas" placeholder="Introduce ventas" required /><br /><br />
+
+
+    <button onclick="agregarVendedor()">Añadir vendedor</button>
+
+    <div id="resultado"></div>
+
+    <script>
+        // DECLARACIÓN DE CONSTANTES Y ARRAY GLOBAL
+
+        const listadoVendedores = [];
+        const BASE_SALARIAL = 200;
+        const COMISION_PORCENTAJE = 0.09;
+    </script>
+
+
+
+</body>
+
+</html>

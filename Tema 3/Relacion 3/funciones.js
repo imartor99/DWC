@@ -134,3 +134,87 @@ function paresImpares() {
 
     document.write(`<p>Total de números: ${arrayOrganizado.length}</p>`);
 }
+
+// EJERCICIO 6
+
+/* Calcula el salario final de un vendedor. */
+function calcularSalario(montoVentas) {
+    // Uso las constantes declaradas en el HTML.
+    let ventas = parseFloat(montoVentas);
+
+    if (isNaN(ventas) || ventas < 0) {
+        return BASE_SALARIAL;
+    }
+
+    let salarioCalculado = BASE_SALARIAL + (ventas * COMISION_PORCENTAJE);
+
+    return parseFloat(salarioCalculado.toFixed(2));
+}
+
+/* Lee los datos del formulario, realiza el cálculo, añade el objeto al array global (listadoVendedores) y actualiza la visualización. */
+function agregarVendedor() {
+    
+    // La lógica de entrada y salida (DOM) permanece aquí.
+    let nombreVendedor = document.getElementById("inputNombre").value;
+    let montoVentas = document.getElementById("inputVentas").value;
+    let contenedorResultado = document.getElementById("resultado");
+
+    // Validación
+    if (nombreVendedor.trim() === "" || isNaN(parseFloat(montoVentas)) || parseFloat(montoVentas) < 0) {
+        contenedorResultado.innerHTML = "<p style='color:red;'>Error: Datos de entrada inválidos.</p>";
+        return;
+    }
+
+    // Cálculo
+    let salarioNumerico = calcularSalario(montoVentas);
+
+    // Creo el objeto
+    const nuevoVendedor = {
+        nombreVendedor: nombreVendedor,
+        montoVentas: parseFloat(montoVentas).toFixed(2),
+        salarioTotal: salarioNumerico.toFixed(2)
+    };
+
+    // Uso el array global declarado en el HTML.
+    listadoVendedores.push(nuevoVendedor);
+
+    // Limpieza
+    document.getElementById("inputNombre").value = "";
+    document.getElementById("inputVentas").value = "";
+    document.getElementById("inputNombre").focus();
+
+    // Mostrar resultados
+    mostrarDatosVendedores(listadoVendedores);
+}
+
+/* Muestra el listado completo de vendedores en el contenedor #resultado. */
+function mostrarDatosVendedores(listadoVendedores) {
+    
+    let contenedorResultados = document.getElementById("resultado");
+
+    if (listadoVendedores.length === 0) {
+        contenedorResultados.innerHTML = `<h3>No hay datos de vendedores para mostrar.</h3>`;
+        return;
+    }
+
+    // Construyo la salida HTML 
+    let salida = `<h3>Listado de Vendedores y Salarios:</h3>`;
+    salida += `<table border='1'>`;
+    salida += `<tr><th>Nombre del Vendedor</th><th>Ventas Brutas ($)</th><th>Salario Final ($)</th></tr>`;
+
+    // Recorro el array.
+    listadoVendedores.forEach(vendedor => {
+        salida += `
+            <tr>
+                <td>${vendedor.nombreVendedor}</td>
+                <td align='right'>$ ${vendedor.montoVentas}</td>
+                <td align='right'>$ ${vendedor.salarioTotal}</td>
+            </tr>
+        `;
+    });
+
+    salida += `</table>`;
+
+    // Inserto resultados en el DIV contenedor
+    contenedorResultados.innerHTML = salida;
+}
