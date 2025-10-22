@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo de Uso Simple</title>
+</head>
+
+<body>
+    <h1>Llamada de Funciones (Resumen)</h1>
+    <p>Abre la Consola del Navegador (F12) para ver los resultados de cada función.</p>
+
+    <script src="modAuxiliar.js"></script>
+
+    <script>
+        console.log("--- RESULTADOS DE FUNCIONES (modAuxiliar.js) ---");
+
+        // 1. filterNumbersGreaterThan
+        const arr1 = [3, 8, 12, 1, 7, 4];
+        console.log("1. filterNumbersGreaterThan:", filterNumbersGreaterThan(arr1, 7)); // Esperado: [3, 1, 4]
+
+        // 2. toHackerSpeak
+        const text2 = "I'm a hacker now";
+        console.log("2. toHackerSpeak:", toHackerSpeak(text2)); // Esperado: 1'm 4 h4ack3r n0w
+
+        // 3. getFileExtension
+        const file3 = "imagen.jpg";
+        console.log("3. getFileExtension:", getFileExtension(file3)); // Esperado: jpg
+
+        // 4. flatArray
+        const arr4 = [[1, 5, 4], [3, 10], [2, 5]];
+        console.log("4. flatArray:", flatArray(arr4)); // Esperado: [1, 5, 4, 3, 10, 2, 5]
+
+        // 5. removeDuplicates
+        const arr5 = [4, 5, 10, 4, 10, 2];
+        console.log("5. removeDuplicates:", removeDuplicates(arr5)); // Esperado: [4, 5, 10, 2]
+
+        // 6. countLetter
+        console.log("6. countLetter:", countLetter("a", "javascript")); // Esperado: 2
+
+        // 7. removeWords
+        const text7 = "This is a really bad test";
+        const words7 = ["really", "bad"];
+        console.log("7. removeWords:", removeWords(text7, words7)); // Esperado: This is a test
+    </script>
+</body>
+
+</html>
