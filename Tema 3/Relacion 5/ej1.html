@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="FuncionesArrow.js"></script>
+    <title>Ejercicio 1</title>
+</head>
+
+<body>
+
+    <h1>Arrow Function</h1>
+    <p>Resultados se muestran en consola F12</p>
+
+    <script>
+        // Definición de variables del ejercicio
+        const longestCityNameInTheWorld = "Taumatawhakatangihangakoauauotamateaturipukakapikimaungahoronukupokaiwhenuakitanatahu";
+
+        console.log("--- RESULTADOS DE LAS FUNCIONES ARROW ---");
+
+        // 1. Demostración de sum (retorno implícito)
+        console.log("1. Función sum:");
+        console.log(`sum(40, 2) = ${sum(40, 2)}`); // 42
+        console.log(`sum(42, 0) = ${sum(42, 0)}`); // 42
+
+        // 2. Demostración de stringLengthConsole (solo console.log)
+        console.log("\n2. Función stringLengthConsole (solo loguea):");
+        stringLengthConsole(longestCityNameInTheWorld);
+
+        // 3. Demostración de stringLengthReturn (loguea Y retorna)
+        console.log("\n3. Función stringLengthReturn (loguea y retorna):");
+        const lengthWillyNilly = stringLengthReturn("willynilly");
+        console.log(`stringLengthReturn("willynilly") retorna: ${lengthWillyNilly}`);
+
+        // 4. Demostración de showAlert (lanza un alert)
+        console.log("\n4. Función showAlert:");
+        console.log("Se ejecutará showAlert('you ball of fluff')...");
+
+        // Esta línea lanzará un pop-up en el navegador
+         showAlert("you ball of fluff"); 
+
+        console.log("Comenta la línea 'showAlert' si no quieres que el pop-up se ejecute cada vez.");
+
+    </script>
+
+
+</body>
+
+</html>
