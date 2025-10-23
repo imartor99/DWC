@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+</head>
+
+<body>
+
+    <h1>Metodos Arrays</h1>
+    <p>Resultados se muestran en consola F12</p>
+
+    <script>
+        // El array original con nombres completos
+        const listaNombres = [
+            "Juan Pérez",
+            "Juana González",
+            "Miguel Ángel Jiménez",
+            "Jesús Rodríguez",
+            "Alicia López",
+            "Jaime Díaz"
+        ];
+
+        // PASO 1: Filtrar (Método: filter)
+        // Encuentra todos los nombres cuyo primer nombre empieza por 'J'.
+
+        const nombresFiltrados = listaNombres.filter(nombreCompleto => {
+            // Usamos startsWith() para comprobar la primera letra
+            return nombreCompleto.startsWith('J');
+        });
+
+        console.log("Paso 1 (Filtrados por 'J'):", nombresFiltrados);
+
+        // PASO 2: Proyectar/Mapear (Método: map)
+        // Transforma el array filtrado en un array que contenga solo las iniciales.
+
+        const arrayIniciales = nombresFiltrados.map(nombreCompleto => {
+            // 1. Dividir el nombre en palabras: ["Juan", "Pérez"]
+            const partes = nombreCompleto.split(' ');
+
+            // 2. Obtener la primera letra de cada palabra (charAt(0)) y unirlas (join(''))
+            const iniciales = partes.map(parte => parte.charAt(0)).join('');
+
+            return iniciales; // Devuelve las iniciales (ej: "JP")
+        });
+
+        console.log("Paso 2 (Proyección a Iniciales):", arrayIniciales);
+
+        // PASO 3: Ordenar (Método: sort)
+        // Ordenar alfabéticamente el array de iniciales.
+
+        const inicialesOrdenadas = arrayIniciales.sort();
+
+        console.log("Paso 3 (Ordenado Final):", inicialesOrdenadas);
+
+        console.log("\nFINAL (Resultado Final del Ejercicio):", inicialesOrdenadas);
+    </script>
+
+</body>
+
+</html>
