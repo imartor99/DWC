@@ -43,3 +43,10 @@ const showAlert = (name) => {
 // Arrow function that returns the string, Hello, I am ${name}, and I am ${age} years old.
 
 const introduceYourself = (name, age) => `Hello, I am ${name}, and I am ${age} years old.`;
+
+//---------------------------------------------------------------------------------------------------------------------------------------//
+
+//EJERCICIO 3
+
+// 3. Write an arrow function that takes an array of integers, and returns the sum of the elements in the array. Google and use the built-in reduce array method for this.
+const sumArray = (arr) => arr.reduce((acumulador, valorActual) => acumulador + valorActual, 0);
