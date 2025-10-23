@@ -36,3 +36,10 @@ const showAlert = (name) => {
     alert(alerts[(Math.floor(Math.random() * alerts.length))] + `, ${name}!`);
 };
 
+//---------------------------------------------------------------------------------------------------------------------------------------//
+
+//EJERCICIO 2
+
+// Arrow function that returns the string, Hello, I am ${name}, and I am ${age} years old.
+
+const introduceYourself = (name, age) => `Hello, I am ${name}, and I am ${age} years old.`;
