@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 9</title>
+</head>
+
+<body>
+
+    <h2>Arrow Function</h2>
+
+    <p>Resultados en consola F12</p>
+
+    <script>
+
+        const fibonacci = (n) => {
+            if (n < 3) return 1;
+            return fibonacci(n - 1) + fibonacci(n - 2);
+        };
+
+        // Llamada a la función (Cálculo del quinto número de Fibonacci)
+        console.log("Cuarto número Fibonacci: ", fibonacci(4));
+    </script>
+
+</body>
+
+</html>
