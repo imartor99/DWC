@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Práctica de Métodos de Arrays Funcionales</title>
+</head>
+
+<body>
+    <h1>Práctica de Métodos de Arrays (Funcional)</h1>
+    <p>Los resultados de las operaciones se imprimen en la Consola del Desarrollador (F12).</p>
+
+    <script>
+        // --- DECLARACIÓN DE ARRAYS ---
+        const NUMBERS = [1, 4, 7, 8, 10 - 16];
+        const STRINGS = ['manzana', 'platano', 'kiwi', 'mandarina', 'uva', 'sandia', 'historia', 'crisis', 'isla', 'frambuesa'];
+        const ARRAY_A = [2, 17, 18];
+        const ARRAY_B = [19 - 21];
+
+        // --- ARRAYS MUTABLES (Usados para shift, unshift, splice) ---
+        // Usamos 'let' 
+        let mutableArr1 = ['PrimerElemento', 'PalabraA', 'PalabraB', 'PalabraC'];
+        let mutableArr2 = ['Estructura', 'Datos', 'JavaScript'];
+        let mutableArr3 = ['Uno', 'Dos', 'Tres', 'Cuatro', 'Cinco'];
+
+
+        console.log("--- INICIO DE LA PRÁCTICA DE MÉTODOS DE ARRAYS ---");
+
+
+
+        // 1. find largest number (Encontrar el número más grande)
+        // Usa reduce()
+        const maxNumber = NUMBERS.reduce((max, n) => (n > max ? n : max));
+        console.log("\n1. Número más grande (reduce):", maxNumber);
+
+
+        // 2. find longest string (Encontrar la cadena más larga)
+        // Usa reduce()
+        const longestString = STRINGS.reduce((longest, current) => {
+            return current.length > longest.length ? current : longest;
+        });
+        console.log("2. Cadena más larga (reduce):", `"${longestString}"`);
+
+
+        // 3. find even numbers (Encontrar números pares)
+        // Usa filter()
+        const evenNumbers = NUMBERS.filter(n => n % 2 === 0);
+        console.log("3. Números pares (filter):", evenNumbers);
+
+
+        // 4. find odd numbers (Encontrar números impares)
+        // Usa filter()
+        const oddNumbers = NUMBERS.filter(n => n % 2 !== 0);
+        console.log("4. Números impares (filter):", oddNumbers);
+
+
+        // 5. find words that contain ‘is’ (Encontrar palabras que contienen 'is')
+        // Usa filter() e includes()
+        const wordsWithIs = STRINGS.filter(word => word.includes('is'));
+        console.log("5. Palabras con 'is' (filter/includes):", wordsWithIs);
+
+
+
+        // 6. assert all numbers are divisible by three (Afirmar divisibilidad por 3)
+        // Usa every()
+        const allDivisibleByThree = NUMBERS.every(n => n % 3 === 0);
+        console.log("6. ¿Todos los números son divisibles por 3? (every):", allDivisibleByThree);
+
+        // Ejemplo de array que sí lo cumple
+        const TEST_DIV_3 = [9, 22, 23];
+        const testDivisible = TEST_DIV_3.every(n => n % 3 === 0);
+        console.log(`   - Para [${TEST_DIV_3.join(', ')}]: ${testDivisible}`);
+
+
+        // 7. zip two arrays together (Unir dos arrays)
+        // Usa concat()
+        const unionArray = ARRAY_A.concat(ARRAY_B);
+        console.log("\n7. Arrays unidos (concat):", unionArray);
+
+        // 8. sort joined array from smallest to largest (Ordenar array unido)
+        // Usa concat() y sort() con comparador numérico
+        // Usamos la función de comparación (a, b) => a - b para números
+        const ordUnionArray = ARRAY_A.concat(ARRAY_B).sort((a, b) => a - b);
+        console.log("8. Array unido y ordenado (sort):", ordUnionArray);
+
+
+        // 9. remove the first word in the array (Eliminar la primera palabra)
+        // Usa shift() (mutación)
+        console.log("\n9. Eliminar primera palabra (shift). Array original:", mutableArr1);
+        mutableArr1.shift();
+        console.log("Array después de shift:", mutableArr1);
+
+
+        // 10. place a new word at the start of the array (Colocar nueva palabra al inicio)
+        // Usa unshift() (mutación)
+        const newWord = 'NuevoInicio';
+        console.log("10. Colocar nueva palabra al inicio (unshift). Array original:", mutableArr2);
+        mutableArr2.unshift(newWord);
+        console.log("Array después de unshift:", mutableArr2);
+
+
+        // 11. replace some elements (Reemplazar elementos)
+        // Usa splice() (mutación)
+        console.log("11. Reemplazar elementos (splice). Array original:", mutableArr3);
+        // Eliminamos 2 elementos a partir del índice 1 ('Dos', 'Tres') e insertamos 'X' e 'Y'.
+        mutableArr3.splice(1, 2, 'Reemplazo_X', 'Reemplazo_Y');
+        console.log("Array después de splice:", mutableArr3);
+
+    </script>
+</body>
+
+</html>
