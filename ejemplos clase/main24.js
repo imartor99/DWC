@@ -27,11 +27,12 @@ let ejemploSpreadOperatorsCombinarObjetos = ()=>{
     console.log("Main ejemplo cargado");
     //expandeArray();
     let valores = ["a", "b", "c"];
-    let arDestino2=[];
+    
 
-    valores = arDestino2;
+    let arDestino2 = valores;
 
     let arDestino=[...valores, "g"]
+    arDestino2.push("x")
     console.log("Array copiado por valor: ", arDestino);
     arDestino.push("f")
     console.log("Array copiado por referencia: ", arDestino2)
