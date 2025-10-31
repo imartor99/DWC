@@ -198,7 +198,7 @@ class TresEnRaya {
 }
 ```
 
-### ⭐️ 2.4. OPCIONAL: Clase `TresEnRayaIA` - Desarrollo del Algoritmo
+### 2.4. OPCIONAL: Clase `TresEnRayaIA` - Desarrollo del Algoritmo
 
 Para cumplir con el requisito de "cierto grado de inteligencia artificial" (no aleatorio), la IA debe seguir una estrategia por prioridades.
 
@@ -208,7 +208,7 @@ Para cumplir con el requisito de "cierto grado de inteligencia artificial" (no a
 
 ---
 
-## 💣 3) Clase `Buscaminas`
+## 3) Clase `Buscaminas`
 
 El juego consiste en despejar casillas sin minas en un tablero de $8\times8$ con 10 minas.
 
