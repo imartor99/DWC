@@ -35,6 +35,8 @@ function ordenaFechaMatriculacion(db){
     return db.enrollments.sort((a,b) => new Date (a.enrollmentDate) - new Date (b.enrollmentDate));
 }
 
+//FUncion que reciba el id del alumno y me muestre los cursos en los que esta matriculado
+
 
 /**
  * main12.js    
