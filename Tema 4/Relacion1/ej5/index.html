@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 5 - Canvas</title>
+    <style>
+      #canvas-container {
+        display: inline-block;
+        border: 1px solid black;
+      }
+
+      #canvas-table {
+        border-collapse: collapse; /* Elimina el espacio entre celdas */
+      }
+
+      #canvas-table td {
+        width: 10px; 
+        height: 10px;
+        padding: 0;
+        margin: 0;
+        /* El color de borde 'eee' simula celdas vacías */
+        border: 1px solid #eee; 
+      }
+      button {
+          margin-bottom: 10px;
+          padding: 8px 15px;
+          font-weight: bold;
+      }
+      p {
+        margin: 5px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Dibuja en el Canvas de la Tabla</h1>
+
+    <button id="clear-button">Borrar Canvas Completo</button>
+
+    <h2>Instrucciones:</h2>
+    <p>Para dibujar **Rojo**: Mantén pulsada la tecla **Ctrl** mientras mueves el ratón.</p>
+    <p>Para dibujar **Azul**: Mantén pulsada la tecla **Shift** mientras mueves el ratón.</p>
+    <p>Para **Borrar líneas**: Mantén pulsada la tecla **Alt** mientras mueves el ratón.</p>
+    
+    <hr>
+    
+    <div id="canvas-container">
+      </div>
+
+    <script type="module" src="main5.js"></script>
+  </body>
+</html>
