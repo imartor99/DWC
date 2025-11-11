@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ejercicio 6 - Colores Hexadecimales</title>
+    <style>
+      body {
+        font-family: sans-serif;
+      }
+
+      /* Estilos para la tabla */
+      #color-table {
+        border-collapse: collapse;
+        width: 300px;
+        margin-top: 20px;
+      }
+      #color-table th,
+      #color-table td {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: center;
+        font-weight: bold;
+      }
+
+      /* Estilo para el contenedor del título (imagen) */
+      #titulo-imagen {
+        width: 350px; /* Ajusta según el tamaño de tu imagen */
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <img
+      id="titulo-imagen"
+      src="titulo_original.jpeg"
+      alt="Adivina el Color"
+      data-original-src="titulo_original.jpeg"
+      data-alternative-src="titulo_alternativo.jpg"
+    />
+
+    <hr />
+
+    <p>
+      Este programa interactivo te permite descubrir el color representado por
+      cada código hexadecimal. Simplemente pasa el puntero sobre los códigos de
+      la tabla a continuación:
+    </p>
+
+    <table id="color-table">
+      <thead>
+        <tr>
+          <th>Código / Nombre</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-color-hex="#FF0000" data-color-name="Rojo">#FF0000</td>
+        </tr>
+        <tr>
+          <td data-color-hex="#00FF00" data-color-name="Verde">#00FF00</td>
+        </tr>
+        <tr>
+          <td data-color-hex="#0000FF" data-color-name="Azul">#0000FF</td>
+        </tr>
+        <tr>
+          <td data-color-hex="#FFFF00" data-color-name="Amarillo">#FFFF00</td>
+        </tr>
+        <tr>
+          <td data-color-hex="#00FFFF" data-color-name="Cian">#00FFFF</td>
+        </tr>
+        <tr>
+          <td data-color-hex="#FF00FF" data-color-name="Magenta">#FF00FF</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script type="module" src="main6.js"></script>
+  </body>
+</html>
