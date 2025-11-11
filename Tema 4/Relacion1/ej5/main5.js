@@ -92,15 +92,13 @@ function crearCanvas(filas, columnas) {
   }
 }
 
-(() => {
-  // document.addEventListener("DOMContentLoaded") asegura que el DOM esté listo.
-  document.addEventListener("DOMContentLoaded", () => {
-    crearCanvas(70, 70);
+// document.addEventListener("DOMContentLoaded") asegura que el DOM esté listo.
+document.addEventListener("DOMContentLoaded", () => {
+  crearCanvas(70, 70);
 
-    // Asignar el evento 'click' al botón de borrado completo
-    const clearButton = document.getElementById("clear-button");
-    if (clearButton) {
-      clearButton.addEventListener("click", limpiarCanvasCompleto);
-    }
-  });
-})();
+  // Asignar el evento 'click' al botón de borrado completo
+  const clearButton = document.getElementById("clear-button");
+  if (clearButton) {
+    clearButton.addEventListener("click", limpiarCanvasCompleto);
+  }
+});
