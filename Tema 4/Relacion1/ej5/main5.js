@@ -93,8 +93,7 @@ function crearCanvas(filas, columnas) {
 }
 
 (() => {
-  // document.addEventListener("DOMContentLoaded") reemplaza el body onLoad,
-  // asegurando que el DOM esté listo.
+  // document.addEventListener("DOMContentLoaded") asegura que el DOM esté listo.
   document.addEventListener("DOMContentLoaded", () => {
     crearCanvas(70, 70);
 
