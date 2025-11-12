@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creando temas con CSS y Java</title>
+  </head>
+  <body id="body">
+    <section id="section">
+      <div id="menu">
+        <a href="#" onclick="cambiarEstilo('normal'); return false;"
+          >Tema Normal</a
+        >
+        <a href="#" onclick="cambiarEstilo('minimalista'); return false;"
+          >Tema Minimalista</a
+        >
+      </div>
+      <h2>Página de ejemplo</h2>
+      <article>
+        <p>
+          En esta página vamos a comprobar lo fácil que es aplicar estilos
+          mediante CSS a un documento seleccionado.
+        </p>
+      </article>
+      <article>
+        <p>
+          Lo ideal es que al seleccionar un estilo éste permanezca siempre igual
+          para el usuario. Hasta ahora no hemos visto como hacerlo, ¿se te
+          ocurre cómo podremos hacerlo?
+        </p>
+      </article>
+      <article>
+        <p>Utilizando CSS podemos incluso ocultar partes del sitio.</p>
+        <p id="parrafo-normal">
+          Este parrafo debe ser solo visible en el tema Normal
+        </p>
+      </article>
+      <div id="marco"><p>Esto está dentro de un marco</p></div>
+    </section>
+
+    <script src="main1.js"></script>
+  </body>
+</html>
