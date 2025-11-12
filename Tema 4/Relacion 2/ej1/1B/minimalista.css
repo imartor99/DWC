@@ -1,0 +1,38 @@
+/* 1. Limpiar estilos del html */
+html {
+    background-image: none;
+    min-height: 100%;
+}
+
+/* 2. Estilo del Body limpio */
+body {
+    background-color: #FFFFFF; /* Fondo blanco */
+    background-image: none; 
+    padding: 20px;
+    font-family: sans-serif;
+    min-height: 100vh; 
+    margin: 0; 
+}
+
+h2{
+    font-weight: 2.5em;
+}
+
+/* Estilos de la Sección y Contenido */
+#section {
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+/* Párrafo condicional oculto */
+#parrafo-normal {
+    display: none;
+}
+
+/* Estilo del Marco (limpio) */
+#marco {
+    background-color: #FFFFFF; 
+    border: none;
+    padding: 0;
+    margin: 15px 0;
+}

@@ -1,0 +1,60 @@
+/* Aplicar la columna al elemento HTML y asegurar altura completa */
+html {
+  /* Columna lateral azul a rayas (120px de ancho para que se vea bien) */
+  background-image: repeating-linear-gradient(
+    90deg,
+    #add8e6,
+    #add8e6 15px,
+    #4682b4 15px,
+    #4682b4 30px
+  );
+  background-size: 120px 100%;
+  background-repeat: no-repeat;
+  min-height: 100%;
+}
+
+/* 2. Estilos del Body */
+body {
+  background-color: #ffffe0;
+  /* Hacemos que el fondo crema del body se posicione a la derecha de la columna */
+  background-position: 120px 0; /* Empieza después de los 120px de la columna */
+  background-repeat: repeat-y; /* Repetir el color hacia abajo */
+  
+  /* Padding izquierdo para dejar espacio a la columna (se mantiene) */
+  padding: 20px 20px 20px 140px; 
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* Estilo opciones tema */
+#opciones {
+  background-color: #add8e6;
+  font-size: 1.5em;
+  font-weight: bold;
+  border: 1px solid black;
+  color: black;
+}
+
+#opciones a {
+  text-decoration: none;
+}
+
+/* Estilos de la Sección y Contenido */
+#section {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Párrafo condicional visible */
+#parrafo-normal {
+  display: block;
+}
+
+/* Estilo del Marco (fondo amarillo fuerte) */
+#marco {
+  background-color: #ffff99;
+  border: 1px solid #cccc00;
+  padding: 10px;
+  margin: 15px 0;
+}
