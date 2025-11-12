@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio 2</title>
+  </head>
+  <body>
+    <div id="contenedor">
+      <h1>Control de Estilos de Texto (Ejercicio 2)</h1>
+
+      <div class="controles">
+        <button onclick="decrementarFuente()">Reducir Fuente</button>
+        <button onclick="resetFuente()">Tamaño por Defecto</button>
+        <button onclick="aumentarFuente()">Aumentar Fuente</button>
+
+        <button onclick="cambiarAlineacion('justify')">
+          Alinear Justificada
+        </button>
+        <button onclick="cambiarAlineacion('left')">Alinear Izquierda</button>
+      </div>
+
+      <div id="areaTexto">
+        <p>
+          <strong>Párrafo 1.</strong> La manipulación del Modelo de Objetos del
+          Documento (DOM) mediante JavaScript es fundamental para crear páginas
+          web interactivas y accesibles. En este ejercicio, las funciones
+          alteran las propiedades CSS de los elementos de texto en tiempo real,
+          mejorando la experiencia del usuario sin recargar la página.
+        </p>
+        <p>
+          <strong>Párrafo 2.</strong> El control del tamaño de la fuente se
+          realiza obteniendo el valor actual de la propiedad 'font-size',
+          modificándolo con un incremento/decremento fijo y reasignando el nuevo
+          valor. Es crucial usar unidades relativas como `em` o `rem` para
+          asegurar que el escalado sea proporcional.
+        </p>
+        <p>
+          <strong>Párrafo 3.</strong> La capacidad de ajustar el tamaño del
+          texto es una característica clave de accesibilidad. Permite a usuarios
+          con distintas necesidades visuales adaptar el contenido a sus
+          preferencias específicas. El botón de 'Tamaño por Defecto' asegura que
+          siempre se pueda volver a una configuración base estándar.
+        </p>
+        <p>
+          <strong>Párrafo 4.</strong> La alineación del texto se controla
+          mediante la propiedad 'text-align'. Utilizamos funciones simples para
+          alternar entre 'justify' (texto justificado a ambos lados) y 'left'
+          (alineación a la izquierda). Cada botón llama directamente a la
+          función `cambiarAlineacion()` con el parámetro deseado.
+        </p>
+        <p>
+          <strong>Párrafo 5.</strong> Siguiendo las instrucciones, cada
+          funcionalidad (aumento, decremento, reseteo, alineación) está
+          encapsulada en una función de JavaScript independiente. Esto hace que
+          la página sea fácil de extender y depurar.
+        </p>
+      </div>
+    </div>
+
+    <script src="main2.js"></script>
+  </body>
+</html>
