@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario con Foco y Desenfoque</title>
+    <style>
+      /* Estilos esenciales para el mensaje de ayuda y la interacción */
+      #ayuda-mensaje {
+        display: block;
+        margin-top: 5px;
+        padding: 5px;
+      }
+
+      input,
+      textarea,
+      button {
+        cursor: pointer;
+      }
+    </style>
+    <script type="module" src="main7.js"></script>
+  </head>
+  <body>
+    <form id="formulario-contacto">
+      <h2>Contacto</h2>
+      <span id="ayuda-mensaje"></span>
+
+      <div>
+        <label for="nombre">Nombre:</label>
+        <input
+          type="text"
+          id="nombre"
+          name="nombre"
+          data-help="Introduce tu nombre completo."
+        />
+      </div>
+
+      <div>
+        <label for="correo">Correo Electrónico:</label>
+        <input
+          type="email"
+          id="correo"
+          name="correo"
+          data-help="Necesitamos tu correo para responderte."
+        />
+      </div>
+
+      <div>
+        <label for="comentario">Comentario:</label>
+        <textarea
+          id="comentario"
+          name="comentario"
+          rows="4"
+          data-help="Escribe tu consulta o comentario."
+        ></textarea>
+      </div>
+
+      <div>
+        <button type="submit" data-help="Haz clic para enviar el formulario.">
+          Enviar
+        </button>
+        <button type="reset" data-help="Haz clic para borrar todos los datos.">
+          Resetear
+        </button>
+      </div>
+    </form>
+  </body>
+</html>
