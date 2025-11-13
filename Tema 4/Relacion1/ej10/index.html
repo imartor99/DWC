@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Ejercicio 10: Arrastrar Múltiples Imágenes (Clase arrastrable)
+    </title>
+    <style>
+      .arrastrable {
+        display: block;
+        width: 100px;
+        height: 100px;
+        cursor: move;
+        position: absolute;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Ejercicio 10: Arrastrar Múltiples Imagenes</h1>
+
+    <div id="container-drag">
+      <!-- Todas las imágenes arrastrables ahora usan la clase 'arrastrable' -->
+      <img
+        src="imagen.png"
+        class="arrastrable"
+        style="top: 100px; left: 50px"
+      />
+      <img
+        src="imagen.png"
+        class="arrastrable"
+        style="top: 100px; left: 200px"
+      />
+      <img
+        src="imagen.png"
+        class="arrastrable"
+        style="top: 250px; left: 50px"
+      />
+      <!-- ... más imágenes aquí ... -->
+    </div>
+
+    <script type="module" src="main10.js"></script>
+  </body>
+</html>
