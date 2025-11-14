@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Captura del Movimiento
-    // Adjunto el 'mousemove' al **documento entero**.
+    // Adjunto el 'mousemove' al documento entero.
     // Esto es crucial porque si muevo el ratón muy rápido y salgo del límite de la imagen,
     // el documento sigue capturando el movimiento y el arrastre no se interrumpe.
     document.addEventListener("mousemove", onMouseMove);
