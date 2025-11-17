@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio 2</title>
+    <style>
+      form {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+      }
+      div {
+        margin-bottom: 15px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+      input {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+      }
+      .error-message {
+        color: red;
+        font-size: 0.9em;
+        margin-top: 5px;
+        display: block;
+      }
+    </style>
+    <script type="module" src="main2.js"></script>
+  </head>
+  <body>
+    <!-- Crea un formulario típico de registro para tu web. Debe contener al menos
+      campos para introducir nombre, apellidos, DNI, Teléfono, email y nombre de
+      usuario. Todos los campos son obligatorios, y debes validar el mayor
+      número posible de ellos haciendo uso de expresiones regulares. El nombre
+      de usuario debe estar formado por al menos 8 caracteres, entre los cuales
+      debe aparecer obligatoriamente algún número y algún signo de puntuación. -->
+
+    <form id="registro-form" novalidate> <!-- El novalidate elimina la validación por defecto del navegador-->
+      <h2>Registro de Usuario</h2>
+
+      <span id="general-error" class="error-message"></span>
+
+      <div>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required />
+        <span id="nombre-error" class="error-message"></span>
+      </div>
+
+      <div>
+        <label for="apellidos">Apellidos:</label>
+        <input type="text" id="apellidos" name="apellidos" required />
+        <span id="apellidos-error" class="error-message"></span>
+      </div>
+
+      <div>
+        <label for="dni">DNI:</label>
+        <input
+          type="text"
+          id="dni"
+          name="dni"
+          required
+          placeholder="Ej: 12345678A"
+        />
+        <span id="dni-error" class="error-message"></span>
+      </div>
+
+      <div>
+        <label for="telefono">Teléfono:</label>
+        <input
+          type="tel"
+          id="telefono"
+          name="telefono"
+          required
+          placeholder="Ej: 600123456"
+        />
+        <span id="telefono-error" class="error-message"></span>
+      </div>
+
+      <div>
+        <label for="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          placeholder="ejemplo@dominio.com"
+        />
+        <span id="email-error" class="error-message"></span>
+      </div>
+
+      <div>
+        <label for="usuario"
+          >Nombre de Usuario (Min. 8 caracteres, debe incluir número y signo
+          puntuación):</label
+        >
+        <input type="text" id="usuario" name="usuario" required />
+        <span id="usuario-error" class="error-message"></span>
+      </div>
+
+      <button type="submit">Registrar</button>
+    </form>
+  </body>
+</html>
