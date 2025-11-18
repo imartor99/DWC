@@ -6,6 +6,8 @@ function crearDiv(nodoPadre) {
 
         const div = document.createElement('div');
         div.id = `student-${student.id}`;
+
+        div.addEventListener('click', mostrarDetallesDelEstudiante);
         
         const pName = document.createElement('p');
         pName.textContent = `Name: ${student.name}`;
@@ -37,7 +39,7 @@ function hacerFlex() {
         divs[i].style.padding = '10px';
     }
 }
-
+//Filtro estudiantes por estado(active)
 function filtrarActivos() {
     const checkbox = document.getElementById('activeOnly');
     const contenedor = document.getElementById('contenedor');
@@ -63,6 +65,45 @@ function filtrarActivos() {
             // Si el checkbox no esta marcado, muestro todos
             div.style.display = 'block';
         }
+    }
+}
+
+function mostrarDetallesDelEstudiante(event) {
+    const clickedDiv = event.currentTarget;
+    // Extraer el ID único del estudiante del ID del div target
+    const studentIdString = clickedDiv.id.split('-')[1];
+    const studentId = parseInt(studentIdString);
+
+
+    const student = db.students.find(s => parseInt(s.id) === studentId);
+
+    if (student) {
+        const detalles = `<p>
+            Detalles del Estudiante: <br>
+            ---------------------------------- <br>
+            Nombre: ${student.name} <br>
+            ID: ${student.id} <br>
+            Nivel: ${student.level} <br>
+            Activo: ${student.active} <br>
+            Email: ${student.email || 'N/A'} <br>
+            Fecha de Inscripción: ${student.enrollmentDate || 'N/A'}
+        </p>
+        `;
+
+        // Creo un div para mostrar los detalles en lugar de un alert
+        const divDetalles = document.createElement('div');
+        divDetalles.style.border = '1px solid black';
+        divDetalles.style.padding = '10px';
+        divDetalles.style.marginTop = '20px';
+        divDetalles.innerHTML = detalles;
+
+        // Añado el div al body
+        document.body.appendChild(divDetalles);
+        
+        
+        // alert(detalles);
+    } else {
+        alert(`Estudiante con ID ${studentId} no encontrado en la DB.`);
     }
 }
 
