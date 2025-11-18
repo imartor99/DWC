@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio 3</title>
+    <style>
+      body {
+        background-color: #f08080;
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      #nombreUsuario {
+        background: none;
+        border: none;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+        color: white;
+        font-size: 2em;
+        text-align: center;
+        outline: none;
+        margin-bottom: 20px;
+      }
+
+      .requisitos {
+        list-style: none;
+        padding: 0;
+        text-align: left;
+      }
+
+      .requisitos li {
+        margin: 10px 0;
+        transition: color 0.3s ease;
+      }
+
+      .requisitos .invalido {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .requisitos .valido {
+        color: #fff;
+        font-weight: bold;
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff;
+      }
+
+      #boton-enviar {
+        padding: 10px 20px;
+        margin-top: 30px;
+        background-color: #ffb6b6;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.1s ease, transform 0.1s ease;
+      }
+
+      #boton-enviar:active {
+        background-color: #f59999;
+        transform: scale(0.98);
+      }
+
+      #boton-enviar[disabled] {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" id="nombreUsuario" placeholder="usuario" />
+
+    <ul class="requisitos">
+      <li id="req-minuscula" class="invalido">• 1 carácter en minúscula</li>
+      <li id="req-mayuscula" class="invalido">• 1 carácter en mayúscula</li>
+      <li id="req-longitud" class="invalido">• 6 caracteres mínimo</li>
+    </ul>
+
+    <button id="boton-enviar" disabled>Enviar</button>
+
+    <script type="module" src="main3.js"></script>
+  </body>
+</html>
