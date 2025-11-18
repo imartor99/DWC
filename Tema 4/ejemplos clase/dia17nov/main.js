@@ -27,7 +27,9 @@ function hacerFlex() {
     const contenedor = document.getElementById('contenedor');
     contenedor.style.display = 'flex';
     contenedor.style.justifyContent = 'space-evenly';
+    contenedor.style.padding = '30px 20px'
     contenedor.style.gap = '20px'; 
+    contenedor.style.border = '1px solid black'
     
     const divs = contenedor.getElementsByTagName('div');
     for (let i = 0; i < divs.length; i++) {
