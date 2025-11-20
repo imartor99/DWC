@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro Crowdrise - Diseño Dividido</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="contenedor-principal">
+      <div class="panel-visual">
+        <div class="logo-container">
+          <span class="crowdrise-logo">crowdrise</span>
+          <span class="by-powerthru">by powerthru</span>
+        </div>
+        <div class="menu-icon"></div>
+        <p class="copyright">© 2018 Crowdrise</p>
+      </div>
+
+      <div class="panel-formulario">
+        <h2>Welcome to Crowdrise</h2>
+        <p>
+          Let's get you all set up so you can verify your nonprofit and begin
+          setting up your first campaign!
+        </p>
+
+        <form id="registro-form" novalidate>
+          <p class="login-link">
+            Already have an account? <a href="#">Log in</a>
+          </p>
+          <div id="general-error" class="error-message"></div>
+
+          <div class="contenedor-campos">
+            <div class="grupo-campo">
+              <label for="first-name">First Name</label>
+              <input type="text" id="first-name" required placeholder="Peter" />
+              <span id="first-name-error" class="error-message"></span>
+            </div>
+
+            <div class="grupo-campo">
+              <label for="last-name">Last Name</label>
+              <input
+                type="text"
+                id="last-name"
+                required
+                placeholder="Deltondo"
+              />
+              <span id="last-name-error" class="error-message"></span>
+            </div>
+
+            <div class="grupo-campo">
+              <label for="phone">Phone</label>
+              <input
+                type="tel"
+                id="phone"
+                required
+                placeholder="568-857-5309"
+              />
+              <span id="phone-error" class="error-message"></span>
+            </div>
+
+            <div class="grupo-campo">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                required
+                placeholder="pdeltondo@crowdrise.com"
+              />
+              <span id="email-error" class="error-message"></span>
+            </div>
+
+            <div class="grupo-campo">
+              <label for="password">Password</label>
+              <input type="password" id="password" required />
+              <span id="password-error" class="error-message"></span>
+            </div>
+
+            <div class="grupo-campo">
+              <label for="confirm-password">Confirm Password</label>
+              <input type="password" id="confirm-password" required />
+              <span id="confirm-password-error" class="error-message"></span>
+            </div>
+          </div>
+
+          <div class="grupo-checkbox checkbox-lineal">
+            <input type="checkbox" id="agree-terms" required />
+            <label for="agree-terms"
+              >Yes, I want to receive Crowdrise emails</label
+            >
+          </div>
+
+          <div class="grupo-checkbox checkbox-lineal">
+            <input type="checkbox" id="agree-privacy" required />
+            <label for="agree-privacy"
+              >I agree to the <a href="#">Terms, Privacy Policy</a> and
+              <a href="#">Fees.</a></label
+            >
+            <span id="agree-privacy-error" class="error-message"></span>
+          </div>
+
+          <button type="submit">Sign Up</button>
+        </form>
+        <p class="fundraise-link">
+          Don't work for a nonprofit?
+          <a href="#">You can still fundraise for one.</a>
+        </p>
+      </div>
+    </div>
+
+    <script type="module" src="main4.js"></script>
+  </body>
+</html>
