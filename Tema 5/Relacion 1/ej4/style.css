@@ -1,0 +1,72 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+#contenedor-articulos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  width: 100%;
+}
+
+/* Articulo */
+.articulo {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.articulo:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Imagen */
+.articulo img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+/* Titulo */
+.articulo h3 {
+  font-size: 1.1rem;
+  color: #333;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.articulo p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+}
+
+/* Precio */
+.articulo p:nth-of-type(1) {
+  font-weight: bold;
+  color: #2c3e50;
+  font-size: 1.2rem;
+}
+
+/* Categoría */
+.articulo p:nth-of-type(2) {
+  background-color: #e0e7ff;
+  color: #4338ca;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
