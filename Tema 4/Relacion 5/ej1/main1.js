@@ -85,17 +85,14 @@ function main() {
   const app = document.getElementById("app");
   const cookieName = "usuario";
 
-  // Intento obtener el nombre de la cookie
   const nombreUsuario = obtenerCookie(cookieName);
 
   if (nombreUsuario) {
-    // Si existe la cookie, muestro saludo y botón de cerrar sesión
     mostrarSaludo(nombreUsuario, app, cookieName);
   } else {
-    // Si no existe, solicito nombre
     solicitarNombre(app, cookieName);
   }
 }
 
-// Event Listener solicitado
+
 document.addEventListener("DOMContentLoaded", main);
