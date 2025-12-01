@@ -17,7 +17,7 @@ function obtenerProductoPorId(id) {
 }
 
 function formatearDatos(ar) {
-  let contenedor = document.getElementById("contenedorDatos");
+  let contenedor = document.getElementById("contenedorDatos"); 
   ar.forEach((articulo) => {
     let divArticulo = document.createElement("div");
     divArticulo.classList.add("articulo");
