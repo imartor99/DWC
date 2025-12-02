@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Juego del Ahorcado</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="contenedor-juego">
+      <h1>AHORCADO</h1>
+      <h2>JUEGO DEL AHORCADO EN JAVASCRIPT</h2>
+
+      <p class="instrucciones">
+        Usa el alfabeto de abajo para adivinar la palabra, o haz clic en pista
+        para obtener una ayuda.
+      </p>
+
+      <!-- Teclado alfabético -->
+      <div id="teclado" class="teclado"></div>
+
+      <!-- Categoría -->
+      <p id="categoria" class="categoria">
+        La categoría elegida es <span id="nombreCategoria"></span>
+      </p>
+
+      <!-- Palabra a adivinar -->
+      <div id="palabra" class="palabra"></div>
+
+      <!-- Vidas restantes -->
+      <p id="vidas" class="vidas">Tienes <span id="numVidas">10</span> vidas</p>
+
+      <!-- Botón de pista -->
+      <button id="btnPista" class="btn-pista">Pista</button>
+
+      <!-- Botón de reiniciar -->
+      <button id="btnReiniciar" class="btn-reiniciar" style="display: none">
+        Jugar de nuevo
+      </button>
+
+      <!-- Mensaje de resultado -->
+      <p id="mensaje" class="mensaje"></p>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
