@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Juego de Parejas</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="contenedor-juego">
+      <h1>JUEGO DE PAREJAS EN JAVASCRIPT</h1>
+
+      <p id="instrucciones" class="instrucciones">
+        HAZ CLIC EN CUALQUIER CARTA PARA COMENZAR
+      </p>
+
+      <!-- Cronómetro -->
+      <div id="cronometro" class="cronometro">00:00</div>
+
+      <!-- Tablero de cartas -->
+      <div id="tablero" class="tablero"></div>
+
+      <!-- Estadísticas -->
+      <div class="estadisticas">
+        <p>Movimientos: <span id="movimientos">0</span></p>
+        <p>Parejas encontradas: <span id="parejas">0</span> / 5</p>
+      </div>
+
+      <!-- Botón reiniciar -->
+      <button id="btnReiniciar" class="btn-reiniciar">Jugar de nuevo</button>
+
+      <!-- Mensaje de victoria -->
+      <p id="mensaje" class="mensaje"></p>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
