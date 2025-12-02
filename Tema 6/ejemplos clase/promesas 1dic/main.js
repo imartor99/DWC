@@ -1,23 +1,30 @@
-function obtenerProductos() {
-  fetch("https://fakestoreapi.com/products")
-    .then((response) => response.json())
-    .then((json) => {
-      console.log(json);
-      formatearDatos(json);
-      hacerFlex();
-    })
-    .catch((error) => console.log("Hubo un error: " + error.message));
+// function obtenerProductos() {
+//   fetch("https://fakestoreapi.com/products")
+//     .then((response) => response.json())
+//     .then((json) => {
+//       console.log(json);
+//       formatearDatos(json);
+//       hacerFlex();
+//     })
+//     .catch((error) => console.log("Hubo un error: " + error.message));
+// }
+
+//function obtenerProductos(url)
+function obtenerProductos(url) {
+  return fetch(url).then((result) => result.json());
 }
 
 function obtenerProductoPorId(id) {
-  return fetch("https://fakestoreapi.com/products/" + id)
-    .then((response) => response.json())
-    // .then((json) => console.log(json))
-    .catch((error) => console.log("Hubo un error: " + error.message));
+  return (
+    fetch("https://fakestoreapi.com/products/" + id)
+      .then((response) => response.json())
+      // .then((json) => console.log(json))
+      .catch((error) => console.log("Hubo un error: " + error.message))
+  );
 }
 
 function formatearDatos(ar) {
-  let contenedor = document.getElementById("contenedorDatos"); 
+  let contenedor = document.getElementById("contenedorDatos");
   ar.forEach((articulo) => {
     let divArticulo = document.createElement("div");
     divArticulo.classList.add("articulo");
@@ -55,7 +62,14 @@ function hacerFlex() {
 
 const main = () => {
   console.log("Cargando script main ejemplo Fetch");
-  document.getElementById("cargaDatos").addEventListener("click", obtenerProductos);
+  document.getElementById("cargaDatos").addEventListener("click", () => {
+    obtenerProductos("https://fakestoreapi.com/products")
+      .then((productos) => {
+        formatearDatos(productos);
+        hacerFlex();
+      })
+      .catch((error) => console.log("Hubo un error: " + error.message));
+  });
 };
 
 document.addEventListener("DOMContentLoaded", main);
