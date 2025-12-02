@@ -161,7 +161,7 @@ function ganarJuego() {
     tiempoFinal +
     " con " +
     movimientos +
-    " movimientos 🎉";
+    " movimientos ";
 }
 
 /**
