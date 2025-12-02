@@ -1,0 +1,91 @@
+.contenedor {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 30px 20px;
+  border: 1px solid black;
+  border-radius: 8px;
+  justify-content: space-evenly;
+  gap: 20px;
+}
+
+.personaje {
+  background-color: blanchedalmond;
+  width: 400px;
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 20px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.personaje:hover {
+  transform: scale(1.02);
+}
+
+.personaje img {
+  width: 100px;
+  border-radius: 5px;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+  text-align: center;
+  padding: 20px;
+}
+
+.boton {
+  margin-top: 200px;
+  margin: 0px auto;
+}
+
+.modal-vista {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  text-align: center;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  color: red;
+}
+
+.modal-content img {
+  width: 200px;
+  border-radius: 10px;
+  margin: 20px 0;
+}
+
+.modal-detalles {
+  text-align: left;
+  margin-top: 20px;
+}
