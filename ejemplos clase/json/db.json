@@ -53,6 +53,14 @@
       "enrollmentDate": "2024-09-05",
       "active": false,
       "level": "intermediate"
+    },
+    {
+      "id": "55",
+      "name": "Nacho Rodríguez Martín",
+      "email": "nacho.rodriguez@email.com",
+      "enrollmentDate": "2024-10-01",
+      "active": true,
+      "level": "beginner"
     }
   ],
   "courses": [
