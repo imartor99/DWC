@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#contenido {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 30px;
+    padding: 50px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    gap: 20px;
+    border: 1px solid black;
+}
+
+.card img {
+    width: 100%;
+    object-fit: cover;
+}
