@@ -1,65 +1,49 @@
 import { llamadaAPI } from "./api.js";
 
-/**
- * Función que genera cada card individualmente
- * TODO: Adaptar según la estructura de tu API
- */
-export function crearCard(producto) {
+export function crearCard(personaje) {
   const card = document.createElement("div");
   card.classList.add("card");
+
   card.innerHTML = `
-    <h2>${producto.title}</h2>
-    <p><b>${producto.price}€</b></p>
-    <p>Categoría: ${producto.category}</p>
-    <p>${producto.description}</p>
-    <p>
-      Valoración: ${producto.rating.rate} <br>
-      Votos: (${producto.rating.count})
-    </p>
-    <img src="${producto.image}" alt="imagen producto">
-  `;
+        <h1>${personaje.name}</h1>
+        <p>Sexo: ${personaje.gender}</p>
+        <p>Estado: ${personaje.status}</p>
+        <img src="${personaje.image}" alt="img personaje">
+    `;
 
   return card;
 }
 
-/**
- * Función que coordina la creación de las cards individuales
- */
-export function crearCards(arrProductos) {
+export function crearCards(arrPersonajes) {
   const contenedor = document.getElementById("contenido");
   contenedor.classList.add("cards");
-  contenedor.innerHTML = "";
 
-  arrProductos.forEach((producto) => {
-    const card = crearCard(producto);
+  contenedor.innerHTML = "";
+  arrPersonajes.forEach((personaje) => {
+    const card = crearCard(personaje);
+
     contenedor.appendChild(card);
   });
 }
 
-/**
- * Función que filtra productos según un criterio
- * TODO: Cambiar la URL por la de tu API
- */
+// Función para filtrar personajes por ID
 export async function filtra(obFiltro) {
-  const arrProductos = await llamadaAPI("http://localhost:3000/productos");
+  const response = await llamadaAPI("https://futuramaapi.com/api/characters");
   const { atributo, valor } = obFiltro;
 
-  return arrProductos.filter((producto) => {
-    if (atributo === "price") {
-      return producto.price < valor;
-    } else if (atributo === "rate") {
-      return producto.rating.rate < valor;
-    } else if (atributo === "count") {
-      return producto.rating.count < valor;
+  // Filtrar por ID (personajes con ID menor al valor)
+  return response.items.filter((personaje) => {
+    if (atributo === "id") {
+      return personaje.id < valor;
     }
+    return true;
   });
 }
 
-/**
- * Devuelve un array con las categorías únicas
- */
-export function DevuelveGeneros(arrProductos) {
+export function devuelveGeneros(arrPersonajes) {
   const generos = new Set();
-  arrProductos.forEach((producto) => generos.add(producto.category));
+  arrPersonajes.forEach((personaje) => {
+    generos.add(personaje.gender);
+  });
   return Array.from(generos);
 }

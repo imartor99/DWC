@@ -5,29 +5,29 @@ const main = () => {
 
   formulario.addEventListener("submit", async (event) => {
     event.preventDefault();
+
     const usernameInput = document.getElementById("usuario").value;
-    const passwordInput = document.getElementById("contraseña").value;
+    const passswordInput = document.getElementById("password").value;
 
     try {
-      const usuarioEncontrado = await validaUsuario(
+      const UsuarioEncontrado = await validaUsuario(
         usernameInput,
-        passwordInput
+        passswordInput
       );
 
-      if (usuarioEncontrado) {
-        localStorage.setItem(
-          "usuarioLogueado",
-          JSON.stringify(usuarioEncontrado)
-        );
-        alert(
-          "Login exitoso. ¡Bienvenido, " + usuarioEncontrado.username + "!"
-        );
-        window.location.href = "datos.html";
+      if (!UsuarioEncontrado) {
+        alert("Credenciales Incorrectas, Intentelo de nuevo");
       } else {
-        alert("Credenciales incorrectas. Por favor, inténtalo de nuevo.");
+        alert(
+          "Inicio de sesion correcto. Bienvenido " +
+            UsuarioEncontrado.username +
+            "!"
+        );
+        localStorage.setItem('usuarioLogueado', JSON.stringify(UsuarioEncontrado))//almaceno credenciales
+        window.location.href = "datos.html";
       }
     } catch (error) {
-      console.log("Hubo un error: " + error.message);
+      console.log("hubo un error: " + error.message);
     }
   });
 };

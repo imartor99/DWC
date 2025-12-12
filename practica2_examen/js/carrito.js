@@ -10,34 +10,33 @@ export class Carrito {
 
   dibujarCarrito() {
     const fragment = document.createDocumentFragment();
-
     if (this.articulos.length === 0) {
-      const textCarrito = document.createElement("p");
-      textCarrito.textContent = "No hay productos en el carrito";
-      fragment.appendChild(textCarrito);
+      const textoCarro = document.createElement("p");
+      textoCarro.textContent = `Carrito vacio`;
+      fragment.appendChild(textoCarro);
     } else {
       const listaCarro = document.createElement("ul");
       this.articulos.forEach((producto) => {
         const articulo = document.createElement("li");
-        articulo.innerHTML = `Producto: ${producto.title}`;
+        articulo.innerHTML = `Personaje: ${producto.name}`;
         listaCarro.appendChild(articulo);
       });
+
       fragment.appendChild(listaCarro);
     }
-
     return fragment;
   }
 
-  cargarCarrito() {
-    const carritoGuardado = localStorage.getItem("carrito");
-    if (carritoGuardado) {
-      return JSON.parse(carritoGuardado);
-    } else {
-      return [];
-    }
+  guardarCarrito(){
+    localStorage.setItem("carrito", JSON.stringify(this.articulos));
   }
 
-  guardarCarrito() {
-    localStorage.setItem("carrito", JSON.stringify(this.articulos));
+  cargarCarrito(){
+    const carritoGuardado = localStorage.getItem('carrito');
+    if(carritoGuardado){
+        return JSON.parse(carritoGuardado);
+    }else{
+        return [];
+    }
   }
 }
