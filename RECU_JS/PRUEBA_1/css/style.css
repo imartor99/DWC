@@ -1,0 +1,21 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.cards{
+    margin: 1rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    border: 1px solid black;
+    padding: 1rem;
+}
+
+.card{
+    border: 1px solid #ccc;
+    padding: 1rem;
+    text-align: center;
+}
