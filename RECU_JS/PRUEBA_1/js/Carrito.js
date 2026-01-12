@@ -110,7 +110,7 @@ export class Carrito {
 
       // Subtotal individual
       const subtotal = document.createElement("strong");
-      subtotal.textContent = ` | Sub: ${(
+      subtotal.textContent = ` | ${(
         producto.price * producto.cantidad
       ).toFixed(2)}€ `;
       li.appendChild(subtotal);
