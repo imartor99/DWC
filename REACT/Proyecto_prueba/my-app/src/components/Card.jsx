@@ -1,10 +1,12 @@
 import React from 'react'
+import styles from './Card.module.css'
 
-export default function Card(props) {
+export default function Card({Producto}) {
   return (
-    <div>
-        console.log('Props de Card:', props);
-      card
-    </div>
+    <li>
+      <h3 className={styles.h3}>{Producto.title}</h3>
+      <p>precio: {Producto.price > 100 ? Producto.price + "$ producto caro" : Producto.price + "$ producto barato"}</p>
+      <p>Categoria: {Producto.category}</p>
+    </li>
   )
 }
