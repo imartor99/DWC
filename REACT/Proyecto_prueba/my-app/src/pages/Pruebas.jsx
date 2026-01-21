@@ -8,7 +8,7 @@ export default function Pruebas() {
   return (
     <div>
       <h2>Mi pagina de Pruebas</h2>
-      <Contador />
+      <Grid />
     </div>
   )
 }
