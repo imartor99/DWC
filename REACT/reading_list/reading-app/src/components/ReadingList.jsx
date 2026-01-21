@@ -1,40 +1,13 @@
 import React, { useState } from "react";
 import styles from "./ReadingList.module.css";
-export default function ReadingList() {
-  // Inicializo el estado 'libros' con un array de objetos predefinidos.
-  // setLibros es la función que uso para actualizar este estado.
-  const [libros, setLibros] = useState([
-    {
-      id: 1,
-      titulo: "El Quijote",
-      autor: "Miguel de Cervantes",
-      genero: "Novela",
-      leido: false,
-      fechaLectura: null,
-    },
-    {
-      id: 2,
-      titulo: "Cien años de soledad",
-      autor: "Gabriel García Márquez",
-      genero: "Realismo mágico",
-      leido: false,
-      fechaLectura: null,
-    },
-    {
-      id: 3,
-      titulo: "1984",
-      autor: "George Orwell",
-      genero: "Ciencia ficción",
-      leido: false,
-      fechaLectura: null,
-    },
-  ]);
+export default function ReadingList({libros, setLibros}) {
+
 
   // Función para marcar un libro como leído.
   // Recibe el 'id' del libro que quiero marcar.
   const libroLeido = (id) => {
     setLibros(
-      // .map para crear un NUEVO array basado en el anterior
+
       libros.map((libro) => {
         // Si encuentro el libro coincidente por ID
         if (libro.id === id) {
