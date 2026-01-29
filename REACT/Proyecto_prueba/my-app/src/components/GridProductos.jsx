@@ -1,66 +1,85 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from "./GridProductos.module.css";
 import CardProducto from "./CardProducto";
+import useGet from "../hooks/useGet";
+import { useSearchParams } from "react-router-dom";
+import SearchFilter from "./SearchFilter";
+import DebugBusqueda from "./DebugBusqueda";
 
 export default function GridProductos() {
-  const [productos, setProductos] = useState([]);
-  const [categorias, setCategorias] = useState([]);
   const [filtro, setFiltro] = useState("all");
+  const [parametros, setParametros] = useSearchParams();
 
-  const getData = () => {
-    let url = "https://fakestoreapi.com/products";
-    if (filtro !== "all") {
-      url = `https://fakestoreapi.com/products/category/${filtro}`;
-    }
+  // Fetch ALL products from localhost
+  const { data: productos } = useGet("http://localhost:3000/productos");
 
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => setProductos([...data]));
-  };
-
-  const getCategorias = () => {
-    fetch("https://fakestoreapi.com/products/categories")
-      .then((res) => res.json())
-      .then((data) => setCategorias([...data]));
-  };
-
-  useEffect(() => {
-    getCategorias();
-  }, []);
-
-  useEffect(() => {
-    getData();
-  }, [filtro]);
+  // Categorias
+  const categorias = productos
+    ? [...new Set(productos.map((prod) => prod.category))]
+    : [];
 
   const handleFiltroChange = (e) => {
     setFiltro(e.target.value);
   };
 
+  const handleSearchChange = (e) => {
+    const term = e.target.value;
+    if (term) {
+      setParametros({ search: term });
+    } else {
+      setParametros({});
+    }
+  };
+
+  const searchTerm = parametros.get("search") || "";
+
+  // Filtro de productos basado en categoría y término de búsqueda
+  const productosFiltrados = productos
+    ? productos.filter((prod) => {
+        // 1. Filtro por categoría
+        const matchesCategory = filtro === "all" || prod.category === filtro;
+
+        // 2. Filtro por término de búsqueda
+        const matchesSearch = prod.title
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase());
+
+        return matchesCategory && matchesSearch;
+      })
+    : [];
+
   return (
     <>
       <h1>Lista de productos</h1>
 
-      <div style={{ marginBottom: "20px" }}>
-        <label htmlFor="categoryFilter">Filtrar por categoría: </label>
-        <select
-          id="categoryFilter"
-          value={filtro}
-          onChange={handleFiltroChange}
-        >
-          <option value="all">Todas</option>
-          {categorias.map((cat) => (
-            <option key={cat} value={cat}>
-              {cat}
-            </option>
-          ))}
-        </select>
+      <div style={{ marginBottom: "20px", display: "flex", gap: "10px" }}>
+        {/* Filtro por categoría */}
+        <div>
+          <label htmlFor="categoryFilter">Categoría: </label>
+          <select
+            id="categoryFilter"
+            value={filtro}
+            onChange={handleFiltroChange}
+          >
+            <option value="all">Todas</option>
+            {categorias.map((cat) => (
+              <option key={cat} value={cat}>
+                {cat}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* Input de búsqueda */}
+        <SearchFilter valor={searchTerm} onChange={handleSearchChange} />
       </div>
 
+      <DebugBusqueda valor={searchTerm} />
+
       <div className={styles.cards}>
-        {productos &&
-          productos.map((prod) => (
-            <CardProducto key={prod.id} Producto={prod} />
-          ))}
+        {productosFiltrados.map((prod) => (
+          <CardProducto key={prod.id} Producto={prod} />
+        ))}
       </div>
     </>
   );

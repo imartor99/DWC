@@ -1,14 +1,15 @@
 import React from 'react'
-import Grid from '../components/GridProductos';
 import GridProductos from '../components/GridProductos';
 import Contador from '../components/Contador';
+import { useSearchParams } from 'react-router-dom';
 
 export default function Pruebas() {
    // const arrProductos = ['Pera', 'Manzana', 'Platanos', 'Naranja'];
+   let [searchParams] = useSearchParams();
   return (
     <div>
       <h2>Mi pagina de Pruebas</h2>
-      <Grid />
+      <GridProductos />
     </div>
   )
 }
